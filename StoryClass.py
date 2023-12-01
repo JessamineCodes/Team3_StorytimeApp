@@ -10,7 +10,3 @@ class StoryGenerator:
 
 
 print(StoryGenerator("Jo", "she", "12").story_text)
-# generate paragraph 1
-# takes paragraph 1 from storycomponents.py
-# interpolates the inputs into the story paragraph1
-
