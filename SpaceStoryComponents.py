@@ -1,14 +1,23 @@
+# import the random module to allow for random selection of story options
 import random
-from StoryAPICalls import get_astronaut_name, get_no_iss_residents
 
+# import API call functions from SpaceStoryAPICalls.py
+from SpaceStoryAPICalls import get_astronaut_name, get_no_iss_residents
 
+# Method for creating paragraph one, takes child name and age as inputs
+# Uses the get_astronaut_name function from SpaceStoryAPICalls.py to get a random astronaut name
+# Returns a string containing paragraph one of the story from two possible options
 def paragraph_one(child_name, child_age):
     astronaut_name = get_astronaut_name()
     return f'''{child_name} was the youngest ever astronaut in training, at just {child_age} years old.
     One day, {child_name} was  busy learning all the names of the different planets, when an alarm started to sound.
     It was a message from famous astronaut {astronaut_name} who was living on the International Space Station. The astronauts on the ISS needed {child_name}’s help!'''
 
-
+# Method for creating paragraph two, takes child name as input
+# There are two possible story options, randomly selected using the random module
+# Also uses the random module to randomly select alien's appearance and sound from a list of options,
+# and to randomly select a spaceship part from a list of options for story option 1
+# Returns a string containing paragraph two of the story
 def paragraph_two(child_name):
     rand_spaceship_part = random.choice(["door", "door frame", "vent", "door lock"])
     rand_noise = random.choice(["a warbling wail", "a musical chime-lie song", "a noise like a bubbling brook", "a trilling whistle"])
@@ -28,14 +37,17 @@ def paragraph_two(child_name):
 
     return random.choice([option_one, option_two])
 
-
+# Method for creating paragraph three, takes child name as input
+# Uses the get_no_iss_residents function from SpaceStoryAPICalls.py to get the number of ISS residents
+# Uses the random module to randomly select alien name from a list of options for the story
+# Returns a string containing paragraph three of the story
 def paragraph_three(child_name):
     no_iss_residents = get_no_iss_residents()
     rand_alien_name = random.choice(["Blork", "Snuggles", "Nova", "Alexis", "Wiffle", "Werkle", "Blooblubblub", "Zing", "Meepmeep"])
     return f"From that day on they were best friends! {child_name} called the alien {rand_alien_name} and they lived together on the ISS with the other {no_iss_residents} astronauts."
 
-
-def story_text(child_name, child_age):
+# Method for creating the full story using all three paragraphs, takes child name and age as inputs
+def space_story_text(child_name, child_age):
     para_one = paragraph_one(child_name, child_age)
     para_two = paragraph_two(child_name)
     para_three = paragraph_three(child_name)
@@ -43,4 +55,3 @@ def story_text(child_name, child_age):
     {para_two}
     {para_three}'''
     return response
-
