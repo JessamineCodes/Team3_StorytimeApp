@@ -9,7 +9,7 @@ class Story:
         self.child_age = int(child_age)
         self.theme = theme.lower()
 
-    # Method for generatin story text based on inputs
+    # Method for generating story text based on inputs
     # Uses if statement to check which theme has been chosen and calls the relevant story text method
     def generate_story(self):
         if self.theme == "space":
