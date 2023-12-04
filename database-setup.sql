@@ -19,12 +19,18 @@ CREATE TABLE CHILD (
     FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
+
 -- Story Table
-CREATE TABLE Stories (
+CREATE TABLE STORIES (
     StoryID INT PRIMARY KEY AUTO_INCREMENT,
     Title VARCHAR(100),
     Content TEXT,
     DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP,
     ChildID INT,
-    FOREIGN KEY (ChildID) REFERENCES Children(ChildID)
+    FOREIGN KEY (ChildID) REFERENCES Child(ChildID)
 );
+
+-- - Input mock data into tables
+-- Create functions for inserting child data
+-- Client side functions - asking parent for child Information like name and age
+
