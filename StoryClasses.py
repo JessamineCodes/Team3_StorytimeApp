@@ -24,6 +24,6 @@ class Story:
 
 
 # Testing the class by creating a space story object and printing the story text
-# print(Story("Jo", "she", "12", "space").generate_story())
+print(Story("Jo", "she", "12", "space").generate_story())
 # Testing the class by creating a dino story object and printing the story text
 print(Story("Rose", "she", "9", "dinosaur").generate_story())
