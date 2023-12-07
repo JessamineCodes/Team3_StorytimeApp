@@ -19,8 +19,8 @@ def paragraph_one(child_name, child_age):
 # and to randomly select a spaceship part from a list of options for story option 1
 # Returns a string containing paragraph two of the story
 def paragraph_two(child_name):
-    rand_spaceship_part = random.choice(["door", "door frame", "vent", "door lock"])
-    rand_noise = random.choice(["a warbling wail", "a musical chime-lie song", "a noise like a bubbling brook", "a trilling whistle"])
+    rand_spaceship_part = random.choice(["doors", "door frames", "vents", "door locks"])
+    rand_noise = random.choice(["a warbling wail", "a musical chime-like song", "a noise like a bubbling brook", "a trilling whistle"])
     rand_colour = random.choice(["hot pink", "deep purple", "lime green", "neon orange", "sunflower yellow"])
     rand_pattern = random.choice(["holographic stripes", "bumpy scales", "super fluffy fur", "a leathery hide", "silky downy hair","black polka dots", "white polka dots"])
     alien_desc = f"{rand_colour} with {rand_pattern}"
