@@ -1,11 +1,14 @@
 from mysql.connector import connect
-from config import HOST_NAME, DB_NAME, USER, PASS
+from config import DB_HOST, DB_NAME
+from dotenv import load_dotenv # dotenv module allows for
+import os #
 
 
+load_dotenv()
 def get_connection():
-    connection = connect(host=HOST_NAME,
-                         user=USER,
-                         password=PASS,
+    connection = connect(host=DB_HOST,
+                         user= os.getenv('DB_USER'),
+                         password=os.getenv('DB_PASS'),
                          database=DB_NAME
                          )
     if connection:
@@ -89,7 +92,7 @@ def create_stories_table():
 
 
 #Testing
-# connection = get_connection()
+connection = get_connection()
 # create_user_table()
 # create_child_table()
 # create_stories_table()
