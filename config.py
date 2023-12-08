@@ -1,4 +1,4 @@
 DB_NAME = 'storybook'
-DB_HOST = 'localhost'
-DB_USER = 'practise'
-DB_PASS = 'admin01!'
+HOST_NAME = 'localhost'
+USER = 'meganpark1'
+PASS = 'C0l3y08#'

@@ -21,7 +21,8 @@ class Story:
             return dinosaur_story_text(self.child_name, self.child_age)
         else:
             return "Theme not recognised"
-
+space_story = Story("Jo", "she", "12", "space").generate_story()
+print(space_story)
 
 # Testing the class by creating a space story object and printing the story text
 print(Story("Jo", "she", "12", "space").generate_story())
