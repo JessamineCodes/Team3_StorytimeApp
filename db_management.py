@@ -1,7 +1,7 @@
 from mysql.connector import connect
 from config import DB_HOST, DB_NAME
-from dotenv import load_dotenv # dotenv module allows for
-import os #
+from dotenv import load_dotenv # dotenv module allows for .env file access
+import os # operating system dependent functionality
 
 
 load_dotenv()
