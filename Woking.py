@@ -89,6 +89,14 @@ try:
     insert_dino_story_query = "INSERT INTO stories (child_name, theme, story_text) VALUES (%s, %s, %s)"
     db_handler.execute_query(insert_dino_story_query, ("Rose", "dinosaur", dino_story))
 
+
+    username = "pam seale"
+    email = "pam@pam.com"
+    password = "1234"
+
+    insert_user_query = "INSERT INTO users (Username, Email, PasswordHash) VALUES (%s, %s, %s)"
+    db_handler.execute_query(insert_user_query, (username, email, password))
+
 finally:
     # Close the MySQL connection
     db_handler.close_connection()
