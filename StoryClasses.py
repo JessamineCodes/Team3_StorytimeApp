@@ -1,7 +1,10 @@
 # Import method for creating space story text from SpaceStoryComponents.py
 from SpaceStoryComponents import space_story_text
-# Import method for creating dinonsaur story text from DinosaurStoryComponents.py
+# Import method for creating dinosaur story text from DinosaurStoryComponents.py
 from DinosaurStoryComponents import dinosaur_story_text
+# Import method for creating pokemon story text from PokemonStoryComponents.py
+from PokemonStoryComponents import pokemon_story_text
+
 
 
 # Class for creating a story object - initialised with 3 inputs about the child and chosen theme
@@ -19,11 +22,15 @@ class Story:
             return space_story_text(self.child_name, self.child_age)
         elif self.theme == "dinosaur":
             return dinosaur_story_text(self.child_name, self.child_age)
+        elif self.theme == "pokemon":
+            return pokemon_story_text(self.child_name, self.child_age)
         else:
             return "Theme not recognised"
 
 
 # Testing the class by creating a space story object and printing the story text
-print(Story("Jo", "she", "12", "space").generate_story())
+#print(Story("Jo", "she", "12", "space").generate_story())
 # Testing the class by creating a dino story object and printing the story text
-print(Story("Rose", "she", "9", "dinosaur").generate_story())
+#print(Story("Rose", "she", "9", "dinosaur").generate_story())
+# Testing the class by creating a pokemon story object and printing the story text
+print(Story("Max", "he", "8", "pokemon").generate_story())
