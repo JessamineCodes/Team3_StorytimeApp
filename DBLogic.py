@@ -1,6 +1,7 @@
 import mysql.connector
 from config import HOST_NAME, DB_NAME, USER, PASS
 from StoryClasses import space_story_instance, space_story,  dinosaur_story_instance, dinosaur_story
+from pprint import pprint
 
 
 class DbConnectionError(Exception):
@@ -68,11 +69,12 @@ class DatabaseHandler:
             """)
             # FOREIGN KEY (UserID) REFERENCES users(UserID)
             self.connection.commit()
+            print("Table stories added to storybook DB")
         except Exception as e:
             print(f"Error creating 'stories' table: {e}")
             raise DbConnectionError("Failed to add 'stories' table to storybook DB")
 
-
+    # query to write to the database
     def execute_query(self, query, data=None):
         try:
             cursor = self.connection.cursor()
@@ -87,6 +89,20 @@ class DatabaseHandler:
         finally:
             cursor.close()
 
+    # query to read the database
+    def fetch_query(self, query: any):
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute(query)
+            return cursor.fetchall()
+
+        except Exception as e:
+            print(f"Error executing fetch query: {e}")
+            raise QueryExecutionError('Failed to execute fetch query.')
+        finally:
+            cursor.close()
+
+
     def close_connection(self):
         if self.connection.is_connected():
             self.connection.close()
@@ -99,23 +115,31 @@ try:
     username = "megan"
     email = "megan@megan.com"
     password = "5678"
+    userID = None
 
+    # Insert user into the MySQL database users table
     insert_user_query = "INSERT INTO users (Username, Email, PasswordHash) VALUES (%s, %s, %s)"
     db_handler.execute_query(insert_user_query, (username, email, password))
 
-
-
+    # Bring back most recent userID from users table (list of tuples returned)
+    fetch_user_query = "SELECT max(UserID) FROM Users"
+    userID = db_handler.fetch_query(fetch_user_query)[0][0]
 
     # Insert the space story text into the MySQL database
     insert_space_story_query = "INSERT INTO stories (Title, Content, ChildName, UserId) VALUES (%s, %s, %s, %s)"
     db_handler.execute_query(insert_space_story_query,
-                             (f"{space_story_instance.child_name}'s Space Story", space_story, space_story_instance.child_name, 1))
-#i'm not sure how to take the user id from Users table without inputting again
+                             (f"{space_story_instance.child_name}'s Space Story", space_story, space_story_instance.child_name, userID))
+
     # Insert the dinosaur story text into the MySQL database
     insert_dinosaur_story_query = "INSERT INTO stories (Title, Content, ChildName, UserId) VALUES (%s, %s, %s, %s)"
     db_handler.execute_query(insert_dinosaur_story_query,
                              (f"{dinosaur_story_instance.child_name}'s Dinosaur Story", dinosaur_story,
-                              dinosaur_story_instance.child_name, 2))
+                              dinosaur_story_instance.child_name, userID))
+
+    # Bring back all stories for a specific child (pprint used: list of tuples)
+    fetch_all_stories_query = "SELECT Title FROM stories WHERE Childname = 'Rose'"
+    pprint(db_handler.fetch_query(fetch_all_stories_query))
+
 finally:
     # Close the MySQL connection
     db_handler.close_connection()
