@@ -30,14 +30,14 @@ class Story:
 # Testing the class by creating a space story object and printing the story text
 space_story_instance = Story("Jo", "she", "12", "space")
 space_story = space_story_instance.generate_story()
-print(space_story)
+# print(space_story)
 
 # Testing the class by creating a dino story object and printing the story text
 dinosaur_story_instance = Story("Rose", "she", "9", "dinosaur")
 dinosaur_story = dinosaur_story_instance.generate_story()
-print(dinosaur_story)
+# print(dinosaur_story)
 
 # Testing the class by creating a pokemon story object and printing the story text
 pokemon_story_instance = Story("Max", "he", "8", "pokemon")
 pokemon_story = pokemon_story_instance.generate_story()
-print(pokemon_story)
+# print(pokemon_story)

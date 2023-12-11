@@ -2,7 +2,7 @@
 import random
 
 # Import function to get dinosaur's info from DinosaurStoryAPICalls.py
-from DinosaurStoryAPICalls import get_random_dino_info_response
+from DinosaurStoryAPICalls import dino_desc, dino_species
 
 
 # Function to create paragraph one of the story using child's name, age and dinosaur species and random elements
@@ -36,9 +36,6 @@ def paragraph_three(child_name, dino_species, dino_desc):
 
 # Function to create the full story text using child's name, age and dinosaurs details from API call
 def dinosaur_story_text(child_name, child_age):
-    dinosaur_dictionary = get_random_dino_info_response()
-    dino_species = dinosaur_dictionary['Name']
-    dino_desc = dinosaur_dictionary['Description']
     para_one = paragraph_one(child_name, child_age, dino_species)
     para_two = paragraph_two(child_name, dino_species)
     para_three = paragraph_three(child_name, dino_species, dino_desc)
