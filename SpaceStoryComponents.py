@@ -14,7 +14,7 @@ def paragraph_one(child_name, child_age):
     astronaut_name = get_astronaut_name()
     return f'''{child_name} was the youngest ever astronaut in training, at just {child_age} years old. One day, {child_name} was busy learning all the names of the different planets, when an alarm started to sound. It was a message from famous astronaut {astronaut_name} who was living on the International Space Station. The astronauts on the ISS needed {child_name}’s help!'''
 
-# Method for creating paragraph two, takes child name as input
+# Method for creating paragraph two, takes child name and pronouns as inputs
 # There are two possible story options, randomly selected using the random module
 # Also uses the random module to randomly select alien's appearance and sound from a list of options,
 # and to randomly select a spaceship part from a list of options for story option 1
