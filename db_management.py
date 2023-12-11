@@ -1,95 +1,155 @@
-from mysql.connector import connect
+# import mysql.connector to connect to database
+import mysql.connector
+# import user credentials from config file
 from config import HOST_NAME, DB_NAME, USER, PASS
+# import story class instance to retrive child's name and story text
+from StoryClasses import space_story_instance, space_story, dinosaur_story_instance, dinosaur_story
+# import pprint
+from pprint import pprint
 
 
-def get_connection():
-    connection = connect(host=HOST_NAME,
-                         user=USER,
-                         password=PASS,
-                         database=DB_NAME
-                         )
-    if connection:
-        print('Connected to DB: {}'.format(DB_NAME))
-
-    return connection
-
-
+# create error for DB connection exception handling
 class DbConnectionError(Exception):
     pass
 
 
-def create_user_table():
-    try:
-        with get_connection() as connection:
-            with connection.cursor() as cursor:
-                create_users_query = """
-                    CREATE TABLE IF NOT EXISTS users (
-                        UserID INT PRIMARY KEY AUTO_INCREMENT,
-                        Username VARCHAR(50),
-                        Email VARCHAR(100),
-                        PasswordHash VARCHAR(255),
-                        DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP
+# create error for query execution exception handling
+class QueryExecutionError(Exception):
+    pass
+
+
+# create class to create, connect to and populate stories database
+class DatabaseHandler:
+    def __init__(self):
+        try:
+            self.connection = mysql.connector.connect(
+                host=HOST_NAME,
+                user=USER,
+                password=PASS
+            )
+
+            self.cursor = self.connection.cursor()
+
+            # Create the database if it doesn't exist
+            self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
+            self.connection.commit()
+
+            # Switch to the specified database
+            self.cursor.execute(f"USE {DB_NAME}")
+            self.connection.commit()
+
+        except Exception as e:
+            print(f"Error establishing database connection: {e}")
+            raise DbConnectionError("Failed to connect to the database")
+
+        try:
+
+            self.cursor.execute("""
+                CREATE TABLE IF NOT EXISTS users (
+                    UserID INT PRIMARY KEY AUTO_INCREMENT,
+                    Username VARCHAR(50) NOT NULL,
+                    Email VARCHAR(100) NOT NULL UNIQUE,
+                    PasswordHash VARCHAR(255) NOT NULL,
+                    DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP
                     )
-                """
-                cursor.execute(create_users_query)
-                connection.commit()  # Commit the changes
-                print("Table users added to storybook DB")
+                """)
 
+            self.connection.commit()  # Commit the changes
+            print("Table users added to storybook DB")
+        except Exception as e:
+            print(f"Error creating 'users' table: {e}")
+            raise DbConnectionError("Failed to add 'users' table to storybook DB")
 
-    except Exception as e:
-        print(f"Error occurred: {e}")
-        raise DbConnectionError("Failed to add users table to storybook DB")
+        try:
 
-def create_child_table():
-    try:
-        with get_connection() as connection:
-            with connection.cursor() as cursor:
-                create_children_query = """
-                    CREATE TABLE IF NOT EXISTS child (
-                        ChildID INT PRIMARY KEY AUTO_INCREMENT,
-                        UserID INT,
-                        ChildName VARCHAR(50),
-                        Age INT,
-                        Pronouns VARCHAR(50),
-                        FOREIGN KEY (UserID) REFERENCES users(UserID)
-                    )
-                """
-                cursor.execute(create_children_query)
-                connection.commit()  # Commit the changes
-                print("Table children added to storybook DB")
-
-
-    except Exception as e:
-        print(f"Error occurred: {e}")
-        raise DbConnectionError("Failed to add children table to storybook DB")
-
-def create_stories_table():
-    try:
-        with get_connection() as connection:
-            with connection.cursor() as cursor:
-                create_stories_query = """
+            # Create the 'stories' table if it doesn't exist
+            self.cursor.execute(""" 
                     CREATE TABLE IF NOT EXISTS stories (
                         StoryID INT PRIMARY KEY AUTO_INCREMENT,
-                        Title VARCHAR(100),
-                        Content TEXT,
+                        Title VARCHAR(100) NOT NULL,
+                        Content TEXT NOT NULL,
                         DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                        ChildID INT,
-                        FOREIGN KEY (ChildID) REFERENCES Child(ChildID)
+                        UserID INT NOT NULL,
+                        ChildName VARCHAR(100) NOT NULL,
+                        FOREIGN KEY (UserID) REFERENCES users(UserID)
                     )
-                """
-                cursor.execute(create_stories_query)
-                connection.commit()  # Commit the changes
-                print("Table stories added to storybook DB")
+                
+            """)
+
+            self.connection.commit()
+            print("Table stories added to storybook DB")
+        except Exception as e:
+            print(f"Error creating 'stories' table: {e}")
+            raise DbConnectionError("Failed to add 'stories' table to storybook DB")
+
+    # query to write to the database
+    def execute_query(self, query, data=None):
+
+        try:
+            cursor = self.connection.cursor()
+            if data:
+                cursor.execute(query, data)
+            else:
+                cursor.execute(query)
+            self.connection.commit()
+        except Exception as e:
+            print(f"Error executing query: {e}")
+            raise QueryExecutionError('Failed to execute query.')
+        finally:
+            cursor.close()
+
+    # query to read the database
+    def fetch_query(self, query: any):
+        try:
+            cursor = self.connection.cursor()
+            cursor.execute(query)
+            return cursor.fetchall()
+
+        except Exception as e:
+            print(f"Error executing fetch query: {e}")
+            raise QueryExecutionError('Failed to execute fetch query.')
+        finally:
+            cursor.close()
+
+    def close_connection(self):
+        if self.connection.is_connected():
+            self.connection.close()
+            print("MySQL connection closed")
 
 
-    except Exception as e:
-        print(f"Error occurred: {e}")
-        raise DbConnectionError("Failed to add stories table to storybook DB")
+db_handler = None
+# example usage
+try:
+    db_handler = DatabaseHandler()
+    username = "megan"
+    email = "megan@megan.com"
+    password = "5678"
+    userID = None
 
+    # Insert user into the MySQL database users table
+    insert_user_query = "INSERT INTO users (Username, Email, PasswordHash) VALUES (%s, %s, %s)"
+    db_handler.execute_query(insert_user_query, (username, email, password))
 
+    # Bring back most recent userID from users table (list of tuples returned)
+    fetch_user_query = "SELECT max(UserID) FROM Users"
+    userID = db_handler.fetch_query(fetch_user_query)[0][0]
 
-#Testing
-# connection = get_connection()
-# create_user_table()
-# create_child_table()
-# create_stories_table()
+    # Insert the space story text into the MySQL database
+    insert_space_story_query = "INSERT INTO stories (Title, Content, ChildName, UserId) VALUES (%s, %s, %s, %s)"
+    db_handler.execute_query(insert_space_story_query,
+                             (f"{space_story_instance.child_name}'s Space Story", space_story,
+                              space_story_instance.child_name, userID))
+
+    # Insert the dinosaur story text into the MySQL database
+    insert_dinosaur_story_query = "INSERT INTO stories (Title, Content, ChildName, UserId) VALUES (%s, %s, %s, %s)"
+    db_handler.execute_query(insert_dinosaur_story_query,
+                             (f"{dinosaur_story_instance.child_name}'s Dinosaur Story", dinosaur_story,
+                              dinosaur_story_instance.child_name, userID))
+
+    # Bring back all stories for a specific child (pprint used: list of tuples)
+    fetch_all_stories_query = "SELECT Title FROM stories WHERE ChildName = 'Rose'"
+    pprint(db_handler.fetch_query(fetch_all_stories_query))
+
+finally:
+    # Close the MySQL connection
+    db_handler.close_connection()
