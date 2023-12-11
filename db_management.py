@@ -1,12 +1,17 @@
 # import mysql.connector to connect to database
 import mysql.connector
 # import user credentials from config file
-from config import HOST_NAME, DB_NAME, USER, PASS
+from config import DB_HOST, DB_NAME
+# dotenv module allows for .env file access
+from dotenv import load_dotenv
+# operating system dependent functionality
+import os
 # import story class instance to retrive child's name and story text
 from StoryClasses import space_story_instance, space_story, dinosaur_story_instance, dinosaur_story
 # import pprint
 from pprint import pprint
 
+load_dotenv()
 
 # create error for DB connection exception handling
 class DbConnectionError(Exception):
@@ -23,9 +28,10 @@ class DatabaseHandler:
     def __init__(self):
         try:
             self.connection = mysql.connector.connect(
-                host=HOST_NAME,
-                user=USER,
-                password=PASS
+                host=DB_HOST,
+                user= os.getenv('DB_USER'),
+                password=os.getenv('DB_PASS'),
+                database=DB_NAME
             )
 
             self.cursor = self.connection.cursor()
@@ -59,6 +65,7 @@ class DatabaseHandler:
         except Exception as e:
             print(f"Error creating 'users' table: {e}")
             raise DbConnectionError("Failed to add 'users' table to storybook DB")
+
 
         try:
 
@@ -153,3 +160,4 @@ try:
 finally:
     # Close the MySQL connection
     db_handler.close_connection()
+
