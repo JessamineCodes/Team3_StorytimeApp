@@ -1,5 +1,8 @@
+# Importing variables from API call in PokemonStoryApiCalls.py
 from PokemonStoryApiCalls import get_pokemon_info, p_name, p_ability, p_move, poke_type
+# import pronouns dictionary
 from pronouns import pronouns
+# import random module to allow for random selection of various story elements
 import random
 
 # Starter pokemon dictionary
@@ -19,13 +22,13 @@ random_pokemon = random.choice(pokemon_list)
 # Used throughout story so needed in global scope
 random_professor = random.choice(["Professor Alpine", "Professor Elm", "Professor Oak", "Professor Ivy", "Professor Juniper"])
 
-# Method for creating paragraph one, takes child name and age as inputs
+# Method for creating paragraph one, takes child name, pronouns and age as inputs
 def paragraph_one(child_name, child_age, child_pronouns):
 
     response = f'''In a bustling town named Pokeville a young trainer called {child_name} was eager to embark on {pronouns[child_pronouns]['possessive']} Pokémon journey. Being {child_age} meant {child_name} could finally become a Pokémon trainer and {child_name} couldn't wait to see what was in store! {pronouns[child_pronouns]['subject'].title()} set off to the training centre where {pronouns[child_pronouns]['subject']} could choose {pronouns[child_pronouns]['possessive']} very own Pokémon. {child_name} stood in front of a desk facing 3 Poké Balls, each holding a different type of Pokémon: Fire, Water and Grass. {child_name} chose the {random_type} {random_pokemon} as {pronouns[child_pronouns]['possessive']} loyal companion. They became best friends immediately! Just then, {child_name} felt a vibration coming from {pronouns[child_pronouns]['possessive']} pocket. It was an urgent message from {random_professor} giving {child_name} {pronouns[child_pronouns]['possessive']} very first mission as a trainer!'''
     return response
 
-# Function to create paragraph two of the story using child's name, and random elements
+# Function to create paragraph two of the story using child's name, pronouns and random elements
 # Returns string containing paragraph two of the story from two possible options
 def paragraph_two(child_name, child_pronouns):
     random_location = random.choice(["Abandoned Ship", "Granite Cave", "Desert Underpass", "Viridian Forest"])
@@ -38,7 +41,7 @@ def paragraph_two(child_name, child_pronouns):
 
     return random.choice([option_one, option_two])
 
-# Function to create paragraph three of the story using child's name as input
+# Function to create paragraph three of the story using child's name and pronouns as input
 def paragraph_three(child_name, child_pronouns):
     response = f'''Just then, a bright glow surrounded {random_pokemon}. {child_name} watched as {random_pokemon} levelled up and learnt {p_ability}. Filled with newfound confidence {child_name} made {pronouns[child_pronouns]['possessive']} way back to the city, eager to tell {random_professor} the amazing news! The news of {child_name}'s bravery travelled fast and {child_name} couldn't wait for {pronouns[child_pronouns]['possessive']} next adventure.'''
     return response

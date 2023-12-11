@@ -1,7 +1,7 @@
 # import the random module to allow for random selection of story options
 import random
 
-# import pronouns
+# import pronouns dictionary
 from pronouns import pronouns
 
 # import API call functions from SpaceStoryAPICalls.py
