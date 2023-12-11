@@ -39,9 +39,9 @@ class DatabaseHandler:
             self.cursor.execute("""
                 CREATE TABLE IF NOT EXISTS users (
                     UserID INT PRIMARY KEY AUTO_INCREMENT,
-                    Username VARCHAR(50),
-                    Email VARCHAR(100),
-                    PasswordHash VARCHAR(255),
+                    Username VARCHAR(50) NOT NULL,
+                    Email VARCHAR(100) NOT NULL UNIQUE,
+                    PasswordHash VARCHAR(255) NOT NULL,
                     DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP
                     )
                 """)
@@ -58,11 +58,11 @@ class DatabaseHandler:
             self.cursor.execute(""" 
                     CREATE TABLE IF NOT EXISTS stories (
                         StoryID INT PRIMARY KEY AUTO_INCREMENT,
-                        Title VARCHAR(100),
-                        Content TEXT,
+                        Title VARCHAR(100) NOT NULL,
+                        Content TEXT NOT NULL,
                         DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                        UserID INT,
-                        ChildName VARCHAR(100),
+                        UserID INT NOT NULL,
+                        ChildName VARCHAR(100) NOT NULL,
                         FOREIGN KEY (UserID) REFERENCES users(UserID)
                     )
                 
