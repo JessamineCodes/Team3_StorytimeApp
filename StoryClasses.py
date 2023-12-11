@@ -23,7 +23,13 @@ class Story:
             return "Theme not recognised"
 
 
+space_story_instance = Story("Jo", "she", "12", "space")
+space_story = space_story_instance.generate_story()
+print(space_story)
+
+dinosaur_story_instance = Story("Rose", "she", "9", "dinosaur")
+dinosaur_story = dinosaur_story_instance.generate_story()
+
 # Testing the class by creating a space story object and printing the story text
-print(Story("Jo", "she", "12", "space").generate_story())
-# Testing the class by creating a dino story object and printing the story text
-print(Story("Rose", "she", "9", "dinosaur").generate_story())
+print(dinosaur_story)
+print(space_story)
