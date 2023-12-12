@@ -51,6 +51,7 @@ def pokemon_story_text(child_name, child_age, child_pronouns):
     para_one = paragraph_one(child_name, child_age, child_pronouns)
     para_two = paragraph_two(child_name, child_pronouns)
     para_three = paragraph_three(child_name, child_pronouns)
+
     return f'''{para_one}
 
 {para_two}

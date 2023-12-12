@@ -5,7 +5,7 @@ import random
 from pronouns import pronouns
 
 # Import function to get dinosaur's info from DinosaurStoryAPICalls.py
-from DinosaurStoryAPICalls import get_random_dino_info_response
+from DinosaurStoryAPICalls import dino_desc, dino_species
 
 
 # Function to create paragraph one of the story using child's name, age and pronouns, dinosaur species and random elements

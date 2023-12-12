@@ -34,6 +34,7 @@ print(f"Printing space story with pronouns {space_story_instance.child_pronouns}
 print(space_story)
 print("------------------------------------------------------------------")
 
+
 # Testing the class by creating a dino story object and printing the story text
 dinosaur_story_instance = Story("Rose", "she", "9", "dinosaur")
 dinosaur_story = dinosaur_story_instance.generate_story()
@@ -41,8 +42,10 @@ print(f"Printing dinosaur story with pronouns {dinosaur_story_instance.child_pro
 print(dinosaur_story)
 print("------------------------------------------------------------------")
 
+
 # Testing the class by creating a pokemon story object and printing the story text
 pokemon_story_instance = Story("Max", "ze", "8", "pokemon")
 pokemon_story = pokemon_story_instance.generate_story()
 print(f"Printing pokemon story with pronouns {pokemon_story_instance.child_pronouns}")
 print(pokemon_story)
+
