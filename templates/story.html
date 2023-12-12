@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <title>Story {{ story_id }}</title> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+      <h1>{{ story[0] }}</h1>
+      {% if story %}
+        <p>{{ story[1] }}</p>
+      {% else %}
+        <p>Story not found</p>
+      {% endif %}
+    </div>
+</body>
+</html>

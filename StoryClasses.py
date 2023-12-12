@@ -4,7 +4,8 @@ from SpaceStoryComponents import space_story_text
 from DinosaurStoryComponents import dinosaur_story_text
 # Import method for creating pokemon story text from PokemonStoryComponents.py
 from PokemonStoryComponents import pokemon_story_text
-
+# Import method for getting a specific story from utils
+from utils import get_story_by_id
 
 
 # Class for creating a story object - initialised with 3 inputs about the child and chosen theme
@@ -14,6 +15,12 @@ class Story:
         self.child_pronouns = child_pronouns
         self.child_age = int(child_age)
         self.theme = theme.lower()
+
+    # Class level method for getting a specific story from the database
+    @staticmethod
+    def find_story_by_id(story_id):
+        # use method from db utils to get story by id from DB
+        return get_story_by_id(story_id)
 
     # Method for generating story text based on inputs
     # Uses if statement to check which theme has been chosen and calls the relevant story text method
@@ -30,14 +37,14 @@ class Story:
 # Testing the class by creating a space story object and printing the story text
 space_story_instance = Story("Jo", "she", "12", "space")
 space_story = space_story_instance.generate_story()
-print(space_story)
+# print(space_story)
 
 # Testing the class by creating a dino story object and printing the story text
 dinosaur_story_instance = Story("Rose", "she", "9", "dinosaur")
 dinosaur_story = dinosaur_story_instance.generate_story()
-print(dinosaur_story)
+# print(dinosaur_story)
 
 # Testing the class by creating a pokemon story object and printing the story text
 pokemon_story_instance = Story("Max", "he", "8", "pokemon")
 pokemon_story = pokemon_story_instance.generate_story()
-print(pokemon_story)
+# print(pokemon_story)

@@ -1,0 +1,18 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kalnia&family=Montserrat&display=swap');
+
+
+body {
+  background-color: rgb(241, 243, 239);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  width: 800px;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Kalnia', cursive;
+}
