@@ -19,25 +19,33 @@ class Story:
     # Uses if statement to check which theme has been chosen and calls the relevant story text method
     def generate_story(self):
         if self.theme == "space":
-            return space_story_text(self.child_name, self.child_age)
+            return space_story_text(self.child_name, self.child_age, self.child_pronouns)
         elif self.theme == "dinosaur":
-            return dinosaur_story_text(self.child_name, self.child_age)
+            return dinosaur_story_text(self.child_name, self.child_age, self.child_pronouns)
         elif self.theme == "pokemon":
-            return pokemon_story_text(self.child_name, self.child_age)
+            return pokemon_story_text(self.child_name, self.child_age, self.child_pronouns)
         else:
             return "Theme not recognised"
 
 # Testing the class by creating a space story object and printing the story text
-space_story_instance = Story("Jo", "she", "12", "space")
+space_story_instance = Story("Jo", "he", "12", "space")
 space_story = space_story_instance.generate_story()
-# print(space_story)
+print(f"Printing space story with pronouns {space_story_instance.child_pronouns}")
+print(space_story)
+print("------------------------------------------------------------------")
+
 
 # Testing the class by creating a dino story object and printing the story text
 dinosaur_story_instance = Story("Rose", "she", "9", "dinosaur")
 dinosaur_story = dinosaur_story_instance.generate_story()
-# print(dinosaur_story)
+print(f"Printing dinosaur story with pronouns {dinosaur_story_instance.child_pronouns}")
+print(dinosaur_story)
+print("------------------------------------------------------------------")
+
 
 # Testing the class by creating a pokemon story object and printing the story text
-pokemon_story_instance = Story("Max", "he", "8", "pokemon")
+pokemon_story_instance = Story("Max", "ze", "8", "pokemon")
 pokemon_story = pokemon_story_instance.generate_story()
-# print(pokemon_story)
+print(f"Printing pokemon story with pronouns {pokemon_story_instance.child_pronouns}")
+print(pokemon_story)
+
