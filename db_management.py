@@ -6,7 +6,7 @@ from config import DB_HOST, DB_NAME
 from dotenv import load_dotenv
 # operating system dependent functionality
 import os
-# import story class instance to retrive child's name and story text
+# import story class instance to retrieve child's name and story text
 # from StoryClasses import space_story_instance, space_story, dinosaur_story_instance, dinosaur_story
 # import pprint
 from pprint import pprint
@@ -132,27 +132,27 @@ class DatabaseHandler:
 #     email = "megan@megan.com"
 #     password = "5678"
 #     userID = None
-
+#
 #     # Insert user into the MySQL database users table
 #     insert_user_query = "INSERT INTO users (Username, Email, PasswordHash) VALUES (%s, %s, %s)"
 #     db_handler.execute_query(insert_user_query, (username, email, password))
-
+#
 #     # Bring back most recent userID from users table (list of tuples returned)
 #     fetch_user_query = "SELECT max(UserID) FROM Users"
 #     userID = db_handler.fetch_query(fetch_user_query)[0][0]
-
+#
 #     # Insert the space story text into the MySQL database
 #     insert_space_story_query = "INSERT INTO stories (Title, Content, ChildName, UserId) VALUES (%s, %s, %s, %s)"
 #     db_handler.execute_query(insert_space_story_query,
 #                              (f"{space_story_instance.child_name}'s Space Story", space_story,
 #                               space_story_instance.child_name, userID))
-
+#
 #     # Insert the dinosaur story text into the MySQL database
 #     insert_dinosaur_story_query = "INSERT INTO stories (Title, Content, ChildName, UserId) VALUES (%s, %s, %s, %s)"
 #     db_handler.execute_query(insert_dinosaur_story_query,
 #                              (f"{dinosaur_story_instance.child_name}'s Dinosaur Story", dinosaur_story,
 #                               dinosaur_story_instance.child_name, userID))
-
+#
 #     # Bring back all stories for a specific child (pprint used: list of tuples)
 #     fetch_all_stories_query = "SELECT Title FROM stories WHERE ChildName = 'Rose'"
 #     pprint(db_handler.fetch_query(fetch_all_stories_query))
@@ -160,3 +160,4 @@ class DatabaseHandler:
 # finally:
 #     # Close the MySQL connection
 #     db_handler.close_connection()
+
