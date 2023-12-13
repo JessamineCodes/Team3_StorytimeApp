@@ -39,9 +39,6 @@ def paragraph_three(child_name, child_pronouns, dino_species, dino_desc):
 
 # Function to create the full story text using child's name, pronouns and age and dinosaurs details from API call
 def dinosaur_story_text(child_name, child_age, child_pronouns):
-    dinosaur_dictionary = get_random_dino_info_response()
-    dino_species = dinosaur_dictionary['Name']
-    dino_desc = dinosaur_dictionary['Description']
     para_one = paragraph_one(child_name, child_age, child_pronouns, dino_species)
     para_two = paragraph_two(child_name, child_pronouns, dino_species)
     para_three = paragraph_three(child_name, child_pronouns, dino_species, dino_desc)
@@ -51,3 +48,4 @@ def dinosaur_story_text(child_name, child_age, child_pronouns):
 
 {para_three}'''
     return response
+
