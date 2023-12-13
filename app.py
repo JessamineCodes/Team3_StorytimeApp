@@ -1,10 +1,24 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from StoryClasses import Story
 app = Flask(__name__)
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # implement login logic.
+        # For now, redirect to the theme selection page.
+        return redirect(url_for('select_theme'))
+    return render_template('login.html')
+
+
+@app.route('/theme_selection', methods=['GET', 'POST'])
+def select_theme():
+    if request.method == 'POST':
+        selected_theme = request.form['theme']
+        # Redirect to the story creation page with the chosen theme
+        return redirect(url_for('create_story', theme=selected_theme))
+    return render_template('theme_selection.html')
 
 
 @app.route('/story/<int:story_id>')
