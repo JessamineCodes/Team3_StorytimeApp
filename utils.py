@@ -1,9 +1,6 @@
-from db_management import DatabaseHandler
 
-def get_story_by_id(story_id):
-    # intialise db_handler
-    db_handler = DatabaseHandler()
 
+def get_story_by_id(story_id, db_handler):
     # fetch story details from database using fetch_query method
     try:
         fetch_story_query = f"SELECT Title, Content FROM stories WHERE StoryID = {story_id}"
@@ -16,4 +13,5 @@ def get_story_by_id(story_id):
             return None
 
     finally:
-        db_handler.close_connection()
+        # can't close the connection here because it's closed in the calling function
+        pass
