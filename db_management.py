@@ -37,7 +37,7 @@ class DatabaseHandler:
                 database=DB_NAME
             )
 
-            # self.cursor = self.connection.cursor()
+            self.cursor = self.connection.cursor()
 
             # Create the database if it doesn't exist
             self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
