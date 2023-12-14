@@ -9,11 +9,12 @@ import os
 
 # import story class instance to retrieve child's name and story text
 from StoryClasses import space_story_instance, space_story, dinosaur_story_instance, dinosaur_story, pokemon_story_instance, pokemon_story
-import pprint
+
 
 from pprint import pprint
 
 load_dotenv()
+
 
 # create error for DB connection exception handling
 class DbConnectionError(Exception):
@@ -33,8 +34,6 @@ class DatabaseHandler:
                 host=DB_HOST,
                 user= os.getenv('DB_USER'),
                 password=os.getenv('DB_PASS'),
-                # This line needs to be commented out the first time you run the file, then uncommented
-                database=DB_NAME
             )
 
             self.cursor = self.connection.cursor()
@@ -42,10 +41,12 @@ class DatabaseHandler:
             # Create the database if it doesn't exist
             self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
             self.connection.commit()
+            print("storybook DB created (if not exists)")
 
             # Switch to the specified database
             self.cursor.execute(f"USE {DB_NAME}")
             self.connection.commit()
+            print("storybook DB in use")
 
         except Exception as e:
             print(f"Error establishing database connection: {e}")
@@ -68,7 +69,6 @@ class DatabaseHandler:
         except Exception as e:
             print(f"Error creating 'users' table: {e}")
             raise DbConnectionError("Failed to add 'users' table to storybook DB")
-
 
         try:
 
@@ -102,6 +102,7 @@ class DatabaseHandler:
             else:
                 cursor.execute(query)
             self.connection.commit()
+            print("query executed: write to storybook DB")
         except Exception as e:
             print(f"Error executing query: {e}")
             raise QueryExecutionError('Failed to execute query.')
@@ -114,6 +115,7 @@ class DatabaseHandler:
         try:
             cursor = self.connection.cursor()
             cursor.execute(query)
+            print("query executed: read from storybook DB")
             return cursor.fetchall()
 
         except Exception as e:
@@ -129,14 +131,13 @@ class DatabaseHandler:
             print("MySQL connection closed")
 
 
-
 db_handler = None
 # example usage
 if __name__ == '__main__':
     try:
         db_handler = DatabaseHandler()
-        username = "megan"
-        email = "megan@megan.com"
+        username = "megan2"
+        email = "megan23@megan.com"
         password = "5678"
         userID = None
 
