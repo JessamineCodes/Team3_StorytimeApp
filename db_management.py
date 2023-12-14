@@ -34,7 +34,7 @@ class DatabaseHandler:
                 user= os.getenv('DB_USER'),
                 password=os.getenv('DB_PASS'),
                 # This line needs to be commented out the first time you run the file, then uncommented
-                database=DB_NAME
+                # database=DB_NAME
             )
 
             self.cursor = self.connection.cursor()

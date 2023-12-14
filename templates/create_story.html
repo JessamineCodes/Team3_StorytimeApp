@@ -9,7 +9,7 @@
     <body>
         <h1>Generate Your Personalised Story</h1>
         <div class="content-container">
-            <img src="/static/images/{{ theme }}/astronaught.jpeg" alt="space" id="space">
+            <img src="" alt="{{ theme }}" id="{{ theme }}">
             <div class="form-container">
                 <h2>Let's Get Some Details About You</h2>
                 <form action="/create_story/{{ theme }}" method="post">
@@ -18,10 +18,19 @@
                     <h3>Age:</h3>
                     <input type="number" name="child_age" placeholder="Child's Age">
                     <h3>Pronouns:</h3>
-                    <input type="text" name="child_pronouns" placeholder="Child's Pronouns">
+                    <select name="child_pronouns">
+                        <option value="" disabled selected hidden>Child's Pronouns</option>
+                        <option value="he_him">He/Him</option>
+                        <option value="she_her">She/Her</option>
+                        <option value="they_them">They/Them</option>
+                    </select>
                 </form>
                 <button type="submit" form="storyForm">Create Story</button>
             </div>
         </div>
+        <script>
+            
+            document.getElementById('{{ theme }}').src = '/static/images/{{ theme }}/{{ theme }}.png';
+        </script>
     </body>
 </html>
