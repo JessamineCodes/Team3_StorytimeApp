@@ -1,5 +1,7 @@
 # import mysql.connector to connect to database
 import mysql.connector
+
+import SQL_queries
 # import user credentials from config file
 from config import DB_HOST, DB_NAME
 # dotenv module allows for .env file access
@@ -8,12 +10,13 @@ from dotenv import load_dotenv
 import os
 
 # import story class instance to retrieve child's name and story text
-from StoryClasses import space_story_instance, space_story, dinosaur_story_instance, dinosaur_story, pokemon_story_instance, pokemon_story
-import pprint
+from StoryClasses import dinosaur_story_instance, dinosaur_story, pokemon_story_instance, pokemon_story, \
+    space_story_instance, space_story
 
 from pprint import pprint
 
 load_dotenv()
+
 
 # create error for DB connection exception handling
 class DbConnectionError(Exception):
@@ -31,10 +34,8 @@ class DatabaseHandler:
         try:
             self.connection = mysql.connector.connect(
                 host=DB_HOST,
-                user= os.getenv('DB_USER'),
+                user=os.getenv('DB_USER'),
                 password=os.getenv('DB_PASS'),
-                # This line needs to be commented out the first time you run the file, then uncommented
-                database=DB_NAME
             )
 
             self.cursor = self.connection.cursor()
@@ -68,7 +69,6 @@ class DatabaseHandler:
         except Exception as e:
             print(f"Error creating 'users' table: {e}")
             raise DbConnectionError("Failed to add 'users' table to storybook DB")
-
 
         try:
 
@@ -109,11 +109,11 @@ class DatabaseHandler:
             cursor.close()
 
     # query to read the database
-    def fetch_query(self, query: any):
+    def fetch_query(self, query, data=None):
         cursor = None
         try:
             cursor = self.connection.cursor()
-            cursor.execute(query)
+            cursor.execute(query, data)
             return cursor.fetchall()
 
         except Exception as e:
@@ -129,47 +129,74 @@ class DatabaseHandler:
             print("MySQL connection closed")
 
 
+class StoryManager(DatabaseHandler):
 
-db_handler = None
-# example usage
+    def __init__(self):
+        super().__init__()
+        self.db_handler = None
+
+    def insert_user(self, username, email, password):
+        self.execute_query(SQL_queries.insert_user, (username, email, password))
+
+    def insert_story(self, story_instance, content):
+        title = story_instance.get_title()
+        self.execute_query(SQL_queries.insert_story,
+                           (title, content, story_instance.child_name, story_instance.user_id))
+
+    def fetch_all_child_stories(self, child):
+        result = self.fetch_query(SQL_queries.fetch_all_child_stories, child)
+        if result:
+            return [i[0] for i in result]
+        return None
+
+    def fetch_all_user_stories(self, userid):
+        result = self.fetch_query(SQL_queries.fetch_all_user_stories, userid)
+        if result:
+            return [i[0] for i in result]
+        return None
+
+    def fetch_user_id(self):
+        result = self.fetch_query(SQL_queries.fetch_user)
+        if result:
+            return result[0][0]
+        return None
+
+
 if __name__ == '__main__':
     try:
-        db_handler = DatabaseHandler()
-        username = "megan"
-        email = "megan@megan.com"
-        password = "5678"
-        userID = None
+        # db_handler = DatabaseHandler()
+        story_manager = StoryManager()
 
         # Insert user into the MySQL database users table
-        insert_user_query = "INSERT INTO users (Username, Email, PasswordHash) VALUES (%s, %s, %s)"
-        db_handler.execute_query(insert_user_query, (username, email, password))
+        story_manager.insert_user("megan", "megan@me6gan.com", "2345")
 
-        # Bring back most recent userID from users table (list of tuples returned)
-        fetch_user_query = "SELECT max(UserID) FROM Users"
-        userID = db_handler.fetch_query(fetch_user_query)[0][0]
+        # # Retrieve the latest ID
+        user_id = story_manager.fetch_user_id()
+        print(f"userID = {user_id}")
+
+        # # Retrieve specific user ID
+        # user_id = story_manager.fetch_user_id("pam@pam.com")
 
         # Insert the space story text into the MySQL database
-        insert_space_story_query = "INSERT INTO stories (Title, Content, ChildName, UserId) VALUES (%s, %s, %s, %s)"
-        db_handler.execute_query(insert_space_story_query,
-                                (f"{space_story_instance.child_name}'s Space Story", space_story,
-                                space_story_instance.child_name, userID))
+        space_story_instance.user_id = user_id
+        story_manager.insert_story(space_story_instance, space_story)
 
         # Insert the dinosaur story text into the MySQL database
-        insert_dinosaur_story_query = "INSERT INTO stories (Title, Content, ChildName, UserId) VALUES (%s, %s, %s, %s)"
-        db_handler.execute_query(insert_dinosaur_story_query,
-                                (f"{dinosaur_story_instance.child_name}'s Dinosaur Story", dinosaur_story,
-                                dinosaur_story_instance.child_name, userID))
+        dinosaur_story_instance.user_id = user_id
+        story_manager.insert_story(dinosaur_story_instance, dinosaur_story)
 
         # Insert the pokemon story text into the MySQL database
-        insert_pokemon_story_query = "INSERT INTO stories (Title, Content, ChildName, UserId) VALUES (%s, %s, %s, %s)"
-        db_handler.execute_query(insert_pokemon_story_query,
-                                (f"{pokemon_story_instance.child_name}'s Pokemon Story", pokemon_story,
-                                pokemon_story_instance.child_name, userID))
+        pokemon_story_instance.user_id = user_id
+        story_manager.insert_story(pokemon_story_instance, pokemon_story)
 
-        # Bring back all stories for a specific child (pprint used: list of tuples)
-        fetch_all_stories_query = "SELECT Title FROM stories WHERE ChildName = 'Rose'"
-        pprint(db_handler.fetch_query(fetch_all_stories_query))
+        # Fetch all stories for a specific child (pprint used: list of tuples)
+        pprint(story_manager.fetch_all_child_stories(["Jo"]))
+
+        # Fetch all stories for a specific user ID (pprint used: list of tuples)
+        pprint(story_manager.fetch_all_user_stories(["1"]))
 
     finally:
         # Close the MySQL connection
-        db_handler.close_connection()
+        story_manager.close_connection()
+
+db_handler = None
