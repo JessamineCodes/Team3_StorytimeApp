@@ -1,6 +1,6 @@
 # test_script.py
 from db_management import DatabaseHandler
-from StoryClasses import Story
+from StoryClasses import Story, SpaceStory
 
 def test_story_creation():
     db_handler = DatabaseHandler()
@@ -16,7 +16,7 @@ def test_story_creation():
         userID = db_handler.fetch_query(fetch_user_query)[0][0]
 
         # Create a Story instance and insert it into the database
-        space_story_instance = Story("Jo", "she", "12", "space")
+        space_story_instance = SpaceStory("Jane", "she", "12")
         space_story = space_story_instance.generate_story()
         insert_story_query = "INSERT INTO stories (Title, Content, ChildName, UserId) VALUES (%s, %s, %s, %s)"
         db_handler.execute_query(insert_story_query, (f"{space_story_instance.child_name}'s Space Story", space_story, space_story_instance.child_name, userID))

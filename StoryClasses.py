@@ -36,12 +36,17 @@ class Story:
         return find_stories_by_user_id(user_id, db_handler)
         
 
+
+
 class SpaceStory(Story):
     def __init__(self, child_name, child_pronouns, child_age):
         super().__init__(child_name, child_pronouns, child_age)
 
     def generate_story(self):
         return space_story_text(self.child_name, self.child_age, self.child_pronouns)
+
+    def get_title(self):
+        return f"{self.child_name}'s Space Story"
 
 class DinosaurStory(Story):
     def __init__(self, child_name, child_pronouns, child_age):
@@ -50,6 +55,9 @@ class DinosaurStory(Story):
     def generate_story(self):
         return dinosaur_story_text(self.child_name, self.child_age, self.child_pronouns)
 
+    def get_title(self):
+        return f"{self.child_name}'s Dinosaur Story"
+
 class PokemonStory(Story):
     def __init__(self, child_name, child_pronouns, child_age):
         super().__init__(child_name, child_pronouns, child_age)
@@ -57,14 +65,19 @@ class PokemonStory(Story):
     def generate_story(self):
         return pokemon_story_text(self.child_name, self.child_age, self.child_pronouns)
 
+    def get_title(self):
+        return f"{self.child_name}'s Pokemon Story"
 
-# Testing the class by creating a space story object and printing the story text
-space_story_instance = SpaceStory("Jo", "he", "12")
+
+# Testing the class by creating a dino story object and printing the story text
+space_story_instance = SpaceStory("Jo", "he", "7")
 space_story = space_story_instance.generate_story()
+
 
 # print(f"Printing space story with pronouns {space_story_instance.child_pronouns}")
 # print(space_story)
 # print("------------------------------------------------------------------")
+
 
 # Testing the class by creating a dino story object and printing the story text
 dinosaur_story_instance = DinosaurStory("Rose", "she", "9")
