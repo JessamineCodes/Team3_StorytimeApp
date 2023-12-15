@@ -10,8 +10,9 @@ from dotenv import load_dotenv
 import os
 
 # import story class instance to retrieve child's name and story text
-from StoryClasses import dinosaur_story_instance, dinosaur_story, pokemon_story_instance, pokemon_story, \
-    space_story_instance, space_story
+
+from StoryClasses import dinosaur_story_instance, dinosaur_story, pokemon_story_instance, pokemon_story, space_story_instance, space_story
+
 
 from pprint import pprint
 
@@ -43,10 +44,12 @@ class DatabaseHandler:
             # Create the database if it doesn't exist
             self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
             self.connection.commit()
+            print("storybook DB created (if not exists)")
 
             # Switch to the specified database
             self.cursor.execute(f"USE {DB_NAME}")
             self.connection.commit()
+            print("storybook DB in use")
 
         except Exception as e:
             print(f"Error establishing database connection: {e}")
@@ -102,6 +105,7 @@ class DatabaseHandler:
             else:
                 cursor.execute(query)
             self.connection.commit()
+            print("query executed: write to storybook DB")
         except Exception as e:
             print(f"Error executing query: {e}")
             raise QueryExecutionError('Failed to execute query.')
@@ -113,7 +117,11 @@ class DatabaseHandler:
         cursor = None
         try:
             cursor = self.connection.cursor()
+
             cursor.execute(query, data)
+
+            print("query executed: read from storybook DB")
+
             return cursor.fetchall()
 
         except Exception as e:
@@ -127,6 +135,7 @@ class DatabaseHandler:
         if self.connection.is_connected():
             self.connection.close()
             print("MySQL connection closed")
+
 
 
 class StoryManager(DatabaseHandler):
@@ -166,6 +175,7 @@ if __name__ == '__main__':
     try:
         # db_handler = DatabaseHandler()
         story_manager = StoryManager()
+
 
         # Insert user into the MySQL database users table
         story_manager.insert_user("megan", "megan@me6gan.com", "2345")
