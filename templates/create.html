@@ -15,11 +15,11 @@
             <form action="/create/{{ theme }}" method="post" id="storyForm">
                 <input type="hidden" name="user_id" value="1">
                 <h3>Name:</h3>
-                <input type="text" name="child_name" placeholder="Child's Name">
+                <input type="text" name="child_name" placeholder="Child's Name" required>
                 <h3>Age:</h3>
-                <input type="number" name="child_age" placeholder="Child's Age">
+                <input type="number" name="child_age" placeholder="Child's Age" required min="1">
                 <h3>Pronouns:</h3>
-                <input type="text" name="child_pronouns" placeholder="Enter pronouns (e.g., she/her)">
+                <input type="text" name="child_pronouns" placeholder="Enter pronouns (e.g., she/her)" required>
 
                 <button type="submit">Create Story</button>
             </form>
