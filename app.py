@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from StoryClasses import Story
+from StoryClasses import *
 from db_management import DatabaseHandler
 app = Flask(__name__)
 
@@ -30,9 +30,15 @@ def create_story(theme):
         child_name = request.form['child_name']
         child_pronouns = request.form['child_pronouns']
         child_age = request.form['child_age']
-        story_instance = Story(child_name, child_pronouns, child_age, theme)
+        if theme == 'space':
+            story_instance = SpaceStory(child_name, child_pronouns, child_age)
+        elif theme == 'dinosaur':
+            story_instance = DinosaurStory(child_name, child_pronouns, child_age)
+        elif theme == 'pokemon':
+            story_instance = PokemonStory(child_name, child_pronouns, child_age)
         story_text = story_instance.generate_story()
         # Next you would save the story and get its ID.
+
         # story_id = save_story_to_db(story_text)
         # return redirect(url_for('show_story', story_id=story_id))
     return render_template('create_story.html', theme=theme)
