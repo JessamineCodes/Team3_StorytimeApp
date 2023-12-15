@@ -167,33 +167,33 @@ if __name__ == '__main__':
         # db_handler = DatabaseHandler()
         story_manager = StoryManager()
 
-        # Insert user into the MySQL database users table
-        story_manager.insert_user("megan", "megan@me6gan.com", "2345")
-
-        # # Retrieve the latest ID
-        user_id = story_manager.fetch_user_id()
-        print(f"userID = {user_id}")
-
-        # # Retrieve specific user ID
-        # user_id = story_manager.fetch_user_id("pam@pam.com")
-
-        # Insert the space story text into the MySQL database
-        space_story_instance.user_id = user_id
-        story_manager.insert_story(space_story_instance, space_story)
-
-        # Insert the dinosaur story text into the MySQL database
-        dinosaur_story_instance.user_id = user_id
-        story_manager.insert_story(dinosaur_story_instance, dinosaur_story)
-
-        # Insert the pokemon story text into the MySQL database
-        pokemon_story_instance.user_id = user_id
-        story_manager.insert_story(pokemon_story_instance, pokemon_story)
-
-        # Fetch all stories for a specific child (pprint used: list of tuples)
-        pprint(story_manager.fetch_all_child_stories(["Jo"]))
-
-        # Fetch all stories for a specific user ID (pprint used: list of tuples)
-        pprint(story_manager.fetch_all_user_stories(["1"]))
+        # # Insert user into the MySQL database users table
+        # story_manager.insert_user("megan", "megan@me6gan.com", "2345")
+        #
+        # # # Retrieve the latest ID
+        # user_id = story_manager.fetch_user_id()
+        # print(f"userID = {user_id}")
+        #
+        # # # Retrieve specific user ID
+        # # user_id = story_manager.fetch_user_id("pam@pam.com")
+        #
+        # # Insert the space story text into the MySQL database
+        # space_story_instance.user_id = user_id
+        # story_manager.insert_story(space_story_instance, space_story)
+        #
+        # # Insert the dinosaur story text into the MySQL database
+        # dinosaur_story_instance.user_id = user_id
+        # story_manager.insert_story(dinosaur_story_instance, dinosaur_story)
+        #
+        # # Insert the pokemon story text into the MySQL database
+        # pokemon_story_instance.user_id = user_id
+        # story_manager.insert_story(pokemon_story_instance, pokemon_story)
+        #
+        # # Fetch all stories for a specific child (pprint used: list of tuples)
+        # pprint(story_manager.fetch_all_child_stories(["Jo"]))
+        #
+        # # Fetch all stories for a specific user ID (pprint used: list of tuples)
+        # pprint(story_manager.fetch_all_user_stories(["1"]))
 
     finally:
         # Close the MySQL connection
