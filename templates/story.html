@@ -108,14 +108,18 @@
             <button class="missedButton">missed</button>
              <audio id="missedAudio" src="{{ url_for('static', filename='audio/missed.wav') }}"></audio>
 
-             {% elif 'Pokémon' in section %}
-            <button class="PokémonButton">Pokémon</button>
-            <audio id="PokémonAudio" src="{{ url_for('static', filename='Audio/Pokémon.mp3') }}"></audio>
-
            {% else %}
            {{ section }}
            {% endif %}
            {% endfor %}
+    <!--  Checking for the keyword pokemon in text to add music soundtrack -->
+           {% if 'Pokémon' in story %}
+           <button class="MusicButton">Music On</button>
+           <audio id="PokémonAudio" src="{{ url_for('static', filename='Audio/Pokémon.mp3') }}"></audio>
+ 
+ 
+ 
+         {% endif %}
 
       {% else %}
         <p>Story not found</p>
@@ -123,41 +127,44 @@
 
 
 <script>
-    var audio1 = document.getElementById("roarAudio");
-    var audio2 = document.getElementById("explosionAudio");
-    var audio3 = document.getElementById("portalAudio");
-    var audio4 = document.getElementById("grabbedAudio");
-    var audio5 = document.getElementById("rainyAudio");
-    var audio6 = document.getElementById("windyAudio");
-    var audio7 = document.getElementById("stormyAudio");
-    var audio8 = document.getElementById("jungleAudio");
-    var audio9 = document.getElementById("roaringAudio");
-    var audio10 = document.getElementById("roaredAudio");
-    var audio11 = document.getElementById("beachAudio");
-    var audio12 = document.getElementById("cryingAudio");
-    var audio13 = document.getElementById("breakAudio");
-    var audio14 = document.getElementById("tinyAudio");
-    var audio15 = document.getElementById("flashAudio");
-    var audio16 = document.getElementById("alarmAudio");
-    var audio17 = document.getElementById("suitAudio");
-    var audio18 = document.getElementById("trappedAudio");
-    var audio19 = document.getElementById("rubbingAudio");
-    var audio20 = document.getElementById("ateAudio");
-    var audio21 = document.getElementById("warblingAudio");
-    var audio22 = document.getElementById("chime-likeAudio");
-    var audio23 = document.getElementById("bubblingAudio");
-    var audio24 = document.getElementById("whistleAudio");
-    var audio25 = document.getElementById("vibrationAudio");
-    var audio26 = document.getElementById("ranAudio");
-    var audio27 = document.getElementById("growlAudio");
-    var audio28 = document.getElementById("battleAudio");
-    var audio29 = document.getElementById("missedAudio");
-    var audio30 = document.getElementById("PokémonAudio");
+// Javascript 
+
+// Audio file variables 
+    let audio1 = document.getElementById("roarAudio");
+    let audio2 = document.getElementById("explosionAudio");
+    let audio3 = document.getElementById("portalAudio");
+    let audio4 = document.getElementById("grabbedAudio");
+    let audio5 = document.getElementById("rainyAudio");
+    let audio6 = document.getElementById("windyAudio");
+    let audio7 = document.getElementById("stormyAudio");
+    let audio8 = document.getElementById("jungleAudio");
+    let audio9 = document.getElementById("roaringAudio");
+    let audio10 = document.getElementById("roaredAudio");
+    let audio11 = document.getElementById("beachAudio");
+    let audio12 = document.getElementById("cryingAudio");
+    let audio13 = document.getElementById("breakAudio");
+    let audio14 = document.getElementById("tinyAudio");
+    let audio15 = document.getElementById("flashAudio");
+    let audio16 = document.getElementById("alarmAudio");
+    let audio17 = document.getElementById("suitAudio");
+    let audio18 = document.getElementById("trappedAudio");
+    let audio19 = document.getElementById("rubbingAudio");
+    let audio20 = document.getElementById("ateAudio");
+    let audio21 = document.getElementById("warblingAudio");
+    let audio22 = document.getElementById("chime-likeAudio");
+    let audio23 = document.getElementById("bubblingAudio");
+    let audio24 = document.getElementById("whistleAudio");
+    let audio25 = document.getElementById("vibrationAudio");
+    let audio26 = document.getElementById("ranAudio");
+    let audio27 = document.getElementById("growlAudio");
+    let audio28 = document.getElementById("battleAudio");
+    let audio29 = document.getElementById("missedAudio");
+    let audio30 = document.getElementById("PokémonAudio");
 
 
 
 
-    var buttons1 = document.querySelectorAll('.roarButton');
+    let buttons1 = document.querySelectorAll('.roarButton');
     buttons1.forEach(button => {
         button.addEventListener('click', function() {
             audio1.play().then(() => {
@@ -167,7 +174,7 @@
         });
     });
 
-    var buttons2 = document.querySelectorAll('.explosionButton');
+    let buttons2 = document.querySelectorAll('.explosionButton');
     buttons2.forEach(button => {
         button.addEventListener('click', function() {
             audio2.play().then(() => {
@@ -177,7 +184,7 @@
         });
     });
 
-       var buttons3 = document.querySelectorAll('.portalButton');
+       let buttons3 = document.querySelectorAll('.portalButton');
     buttons3.forEach(button => {
         button.addEventListener('click', function() {
             audio3.play().then(() => {
@@ -187,7 +194,7 @@
         });
     });
 
-     var buttons4 = document.querySelectorAll('.grabbedButton');
+     let buttons4 = document.querySelectorAll('.grabbedButton');
     buttons4.forEach(button => {
         button.addEventListener('click', function() {
             audio4.play().then(() => {
@@ -198,7 +205,7 @@
     });
 
 
-        var buttons5 = document.querySelectorAll('.rainyButton');
+        let buttons5 = document.querySelectorAll('.rainyButton');
     buttons5.forEach(button => {
         button.addEventListener('click', function() {
             audio5.play().then(() => {
@@ -208,7 +215,7 @@
         });
     });
 
-        var buttons6 = document.querySelectorAll('.windyButton');
+        let buttons6 = document.querySelectorAll('.windyButton');
     buttons6.forEach(button => {
         button.addEventListener('click', function() {
             audio6.play().then(() => {
@@ -218,7 +225,7 @@
         });
     });
 
-        var buttons7 = document.querySelectorAll('.stormyButton');
+        let buttons7 = document.querySelectorAll('.stormyButton');
     buttons7.forEach(button => {
         button.addEventListener('click', function() {
             audio7.play().then(() => {
@@ -228,7 +235,7 @@
         });
     });
 
-        var buttons8 = document.querySelectorAll('.jungleButton');
+        let buttons8 = document.querySelectorAll('.jungleButton');
     buttons8.forEach(button => {
         button.addEventListener('click', function() {
             audio8.play().then(() => {
@@ -238,7 +245,7 @@
         });
     });
 
-        var buttons9 = document.querySelectorAll('.roaringButton');
+        let buttons9 = document.querySelectorAll('.roaringButton');
     buttons9.forEach(button => {
         button.addEventListener('click', function() {
             audio9.play().then(() => {
@@ -248,7 +255,7 @@
         });
     });
 
-         var buttons10 = document.querySelectorAll('.roaredButton');
+         let buttons10 = document.querySelectorAll('.roaredButton');
     buttons10.forEach(button => {
         button.addEventListener('click', function() {
             audio10.play().then(() => {
@@ -258,10 +265,9 @@
         });
     });
 
-         var buttons11 = document.querySelectorAll('.beachButton');
+         let buttons11 = document.querySelectorAll('.beachButton');
     buttons11.forEach(button => {
         button.addEventListener('click', function() {
-//            audio11.load();
             audio11.play().then(() => {
             }).catch(error => {
                 console.error('Error:', error);
@@ -269,10 +275,9 @@
         });
     });
 
-         var buttons12 = document.querySelectorAll('.cryingButton');
+         let buttons12 = document.querySelectorAll('.cryingButton');
     buttons12.forEach(button => {
         button.addEventListener('click', function() {
-//            audio12.load();
             audio12.play().then(() => {
             }).catch(error => {
                 console.error('Error:', error);
@@ -280,10 +285,9 @@
         });
     });
 
-         var buttons13 = document.querySelectorAll('.breakButton');
+         let buttons13 = document.querySelectorAll('.breakButton');
     buttons13.forEach(button => {
         button.addEventListener('click', function() {
-//            audio13.load();
             audio13.play().then(() => {
             }).catch(error => {
                 console.error('Error:', error);
@@ -291,10 +295,9 @@
         });
     });
 
-         var buttons14 = document.querySelectorAll('.tinyButton');
+         let buttons14 = document.querySelectorAll('.tinyButton');
     buttons14.forEach(button => {
         button.addEventListener('click', function() {
-//            audio14.load();
             audio14.play().then(() => {
             }).catch(error => {
                 console.error('Error:', error);
@@ -302,10 +305,9 @@
         });
     });
 
-         var buttons15 = document.querySelectorAll('.flashButton');
+         let buttons15 = document.querySelectorAll('.flashButton');
     buttons15.forEach(button => {
         button.addEventListener('click', function() {
-//            audio15.load();
             audio15.play().then(() => {
             }).catch(error => {
                 console.error('Error:', error);
@@ -313,7 +315,7 @@
         });
     });
 
-             var buttons16 = document.querySelectorAll('.alarmButton');
+             let buttons16 = document.querySelectorAll('.alarmButton');
     buttons16.forEach(button => {
         button.addEventListener('click', function() {
             audio16.play().then(() => {
@@ -323,10 +325,9 @@
         });
     });
 
-             var buttons17 = document.querySelectorAll('.suitButton');
+             let buttons17 = document.querySelectorAll('.suitButton');
     buttons17.forEach(button => {
         button.addEventListener('click', function() {
-//            audio17.load();
             audio17.play().then(() => {
             }).catch(error => {
                 console.error('Error:', error);
@@ -334,7 +335,7 @@
         });
     });
 
-             var buttons18 = document.querySelectorAll('.trappedButton');
+             let buttons18 = document.querySelectorAll('.trappedButton');
     buttons18.forEach(button => {
         button.addEventListener('click', function() {
             audio18.play().then(() => {
@@ -344,7 +345,7 @@
         });
     });
 
-             var buttons19 = document.querySelectorAll('.rubbingButton');
+             let buttons19 = document.querySelectorAll('.rubbingButton');
     buttons19.forEach(button => {
         button.addEventListener('click', function() {
             audio19.play().then(() => {
@@ -354,7 +355,7 @@
         });
     });
 
-             var buttons20 = document.querySelectorAll('.ateButton');
+             let buttons20 = document.querySelectorAll('.ateButton');
     buttons20.forEach(button => {
         button.addEventListener('click', function() {
             audio20.play().then(() => {
@@ -364,7 +365,7 @@
         });
     });
 
-             var buttons21 = document.querySelectorAll('.warblingButton');
+             let buttons21 = document.querySelectorAll('.warblingButton');
     buttons21.forEach(button => {
         button.addEventListener('click', function() {
             audio21.play().then(() => {
@@ -374,7 +375,7 @@
         });
     });
 
-             var buttons22 = document.querySelectorAll('.chime-likeButton');
+             let buttons22 = document.querySelectorAll('.chime-likeButton');
     buttons22.forEach(button => {
         button.addEventListener('click', function() {
             audio22.play().then(() => {
@@ -384,7 +385,7 @@
         });
     });
 
-             var buttons23 = document.querySelectorAll('.bubblingButton');
+             let buttons23 = document.querySelectorAll('.bubblingButton');
     buttons23.forEach(button => {
         button.addEventListener('click', function() {
             audio23.play().then(() => {
@@ -394,7 +395,7 @@
         });
     });
 
-             var buttons24 = document.querySelectorAll('.whistleButton');
+             let buttons24 = document.querySelectorAll('.whistleButton');
     buttons24.forEach(button => {
         button.addEventListener('click', function() {
             audio24.play().then(() => {
@@ -403,7 +404,7 @@
             });
         });
     });
-              var buttons25 = document.querySelectorAll('.vibrationButton');
+              let buttons25 = document.querySelectorAll('.vibrationButton');
     buttons25.forEach(button => {
         button.addEventListener('click', function() {
             audio25.play().then(() => {
@@ -413,7 +414,7 @@
         });
     });
 
-              var buttons26 = document.querySelectorAll('.ranButton');
+              let buttons26 = document.querySelectorAll('.ranButton');
     buttons26.forEach(button => {
         button.addEventListener('click', function() {
             audio26.play().then(() => {
@@ -423,7 +424,7 @@
         });
     });
 
-                 var buttons27 = document.querySelectorAll('.growlButton');
+                 let buttons27 = document.querySelectorAll('.growlButton');
     buttons27.forEach(button => {
         button.addEventListener('click', function() {
             audio27.play().then(() => {
@@ -434,7 +435,7 @@
     });
 
 
-                 var buttons28 = document.querySelectorAll('.battleButton');
+                 let buttons28 = document.querySelectorAll('.battleButton');
     buttons28.forEach(button => {
         button.addEventListener('click', function() {
             audio28.play().then(() => {
@@ -444,7 +445,7 @@
         });
     });
 
-                 var buttons29 = document.querySelectorAll('.missedButton');
+                 let buttons29 = document.querySelectorAll('.missedButton');
     buttons29.forEach(button => {
         button.addEventListener('click', function() {
             audio29.play().then(() => {
@@ -454,7 +455,7 @@
         });
     });
 
-                 var buttons30 = document.querySelectorAll('.PokémonButton');
+                 let buttons30 = document.querySelectorAll('.MusicButton');
         buttons30.forEach(button => {
         button.addEventListener('click', function() {
             audio30.play().then(() => {
