@@ -19,3 +19,13 @@ h1 {
   text-align: center;
   font-family: 'Kalnia', cursive;
 }
+
+.MusicButton{
+  position: absolute;
+     top: 0;
+     left: 0;
+     right:10;
+     width: 10
+ }
+
+ 
