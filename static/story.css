@@ -1,9 +1,10 @@
+
 body {
     background-color: #FDF9D4;
     text-align: center;
 }
 
-h1{
+h1 {
     font-family: 'Miltonian Tattoo', serif;
     font-size: 5rem;
 }
@@ -15,7 +16,7 @@ p, h4 {
     margin-right: auto;
 }
 
-p{
+p {
     font-family: itim;
     font-size: 1.5rem;
     width: 70%;
@@ -23,20 +24,35 @@ p{
     margin-right: auto;
 }
 
-h4 {
+button {
     background-color: #25389B;
     color: white;
     width: fit-content;
-    padding: 2rem;
+    padding: 1rem 2rem;
     border-radius: 15px;
-    margin: 0;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0.5rem;
+    transition: background-color 0.3s ease;
+    font-family: 'Miltonian Tattoo', serif;
+    font-size: 1.5rem;
 }
 
-#book{
+.home-button a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #5365bf;
+    cursor: pointer;
+}
+
+
+
+#book {
     height: 300px;
     width: 400px;
     padding: 2rem;
 }
+
+
 

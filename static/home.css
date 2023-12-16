@@ -3,7 +3,7 @@ body {
     background-color: #FDF9D4;
     font-family: 'Itim', sans-serif;
     color: #494949;
-    margin: 0;
+    margin: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,17 +16,21 @@ h1 {
 }
 
 h4 {
-    font-size: 1.5rem;
-    background-color: #25389B;
-    color: white;
-    padding: 1em;
-    /* margin: 1em; */
-    border-radius: 10px;
-    transition: background-color 0.3s ease;
+
+        background-color: #25389B;
+        color: white;
+        width: fit-content;
+        padding: 2rem 3rem;
+        border-radius: 15px;
+        margin: 0.5rem;
+        transition: background-color 0.3s ease;
+        font-family: 'Miltonian Tattoo', serif;
+        font-size: 1.5rem;
+
 }
 
 h4:hover {
-    background-color: #1a2e73; /* Change color on hover */
+    background-color: #4b64c0; 
 }
 
 p {
@@ -39,6 +43,7 @@ p {
 .button-container {
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .button-container a {
