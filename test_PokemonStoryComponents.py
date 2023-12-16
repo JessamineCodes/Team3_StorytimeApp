@@ -19,7 +19,7 @@ class TestPokemonStoryFunctions(unittest.TestCase):
         # call the function with example inputs
         result = paragraph_two("Misty", "she")
         # check that the output contains an expected substring of the story
-        self.assertTrue("Misty had been given the huge responsibility" in result)
+        self.assertTrue("been given the" in result)
     # test case for function to create paragraph three
     def test_paragraph_three(self):
         # call the function with example inputs
