@@ -9,7 +9,7 @@ from PokemonStoryComponents import pokemon_story_text
 import abc
 
 # Import method for getting a specific story from utils
-from utils import get_story_by_id
+from utils import get_story_by_id, find_stories_by_user_id
 
 
 # Class for creating a story object - initialised with 3 inputs about the child and chosen theme
@@ -31,6 +31,12 @@ class Story:
     def find_story_by_id(story_id, db_handler):
         # use method from db utils to get story by id from DB
         return get_story_by_id(story_id, db_handler)
+    
+    def show_stories_by_user_id(user_id, db_handler):
+        return find_stories_by_user_id(user_id, db_handler)
+        
+
+
 
 
 

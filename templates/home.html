@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Miltonian&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Miltonian+Tattoo&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet'>
     <title>Home</title>
 </head>
 <body>
-    <h1>Welcome to Once Upon AI Time</h1>
-    <a href="{{ url_for('select_theme') }}"><button>Create Story</button></a>
+    <div class="container">
+  
+    <h1>Once Upon AI Time</h1>
+    
+    <!-- <a href="{{ url_for('select_theme') }}"> -->
+   
+    <p>
+        Welcome to Once Upon AI Time, your personal storybook adventure!
+        Where YOU are the hero of your own story.
+    </p>
+    <p>
+        At Once Upon AI Time, magical tales await. Whether you're training Pokémon, rocketing through space, or roaming with dinosaurs, each story is uniquely yours.  
+    </p>
+    <p>
+        Our stories are not just adventures; they're gateways to learning and discovery.
+    </p>
 
+    <div class = 'button-container'>
+        <a style= "text-decoration: none;" href="/theme">
+            <h4>Create Story </h4>
+        </a>
+        <a style= "text-decoration: none;" href="/saved/1">
+            <h4>My Stories </h4>
+        </a>
+    </div>
+
+</div>
 </body>
 </html>
+
