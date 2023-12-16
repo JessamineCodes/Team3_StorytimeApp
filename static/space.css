@@ -55,4 +55,7 @@ button[type="submit"] {
 }
 
 
-
+button:hover {
+    background-color: #59a0f7;
+    cursor: pointer;
+}
