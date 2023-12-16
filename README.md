@@ -9,7 +9,7 @@ Once Upon AI Time is a user-friendly storytelling app designed to empower busy p
 _All team members played a crucial role in developing Once Upon AI Time, contributing their skills and expertise in Python logic and scripting. Here's a breakdown of each team member's specific contributions:_
 - **Abigail Lumb:** Front-end development, API integration, soundscape integration.
 - **Abigail Ridley:** Front-end development, UI/UX design, project management, documentation.
-- **Deborah Nzekwu:** API integration, Python logic for story creation.
+- **Deborah Nzekwu:** API integration, Python logic for story creation, Front-end development, try and except error handling.
 - **Jessamine McHugh:** Python logic, API integration, front-end development, Flask development, debugging database errors.
 - **Megan Park:** Database design, unit testing.
 - **Pamela Seale:** Database design, unit testing. 
