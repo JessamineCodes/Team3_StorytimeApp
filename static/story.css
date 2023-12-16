@@ -9,14 +9,15 @@ h1 {
     font-size: 5rem;
 }
 
-p, h4 {
+container, h4, p {
     font-family: itim;
     font-size: 1.5rem;
     margin-left: auto;
     margin-right: auto;
 }
 
-p {
+
+.container, p {
     font-family: itim;
     font-size: 1.5rem;
     width: 70%;
@@ -54,5 +55,22 @@ button:hover {
     padding: 2rem;
 }
 
+.MusicButton{
+    position: absolute;
+       top: 0;
+       left: 0;
+       right:10;
+       width: 10
+   }
 
+.container button{
+   background-color: orange;
+    color: black;
+    width: fit-content;
+    padding: 0rem 1rem;
+    border-radius: 10px;
+    margin: 0.5rem;
 
+   font-family: itim;
+    font-size: 1.5rem;
+}
