@@ -2,7 +2,7 @@ body {
     background-color: #FDF9D4;
 }
 
-h1,h2 {
+h1, h2 {
     color: #494949;
     text-align: center;
     margin-bottom: 0.5rem;
@@ -13,11 +13,9 @@ h1 {
     font-size: 5rem;
 }
 
-
 h2 {
     font-size: 4rem;
     font-family: 'Miltonian', serif;
-    
 }
 
 h4, .story {
@@ -33,9 +31,17 @@ h4 {
     width: fit-content;
 }
 
-.story-card, .new-story-card {
+.story-card,
+.new-story-card {
     display: flex;
     justify-content: center;
+}
+
+.story-card a,
+.new-story-card a {
+    margin: 0.5rem;
+    text-decoration: none;
+    color: white;
 }
 
 .story-card {
@@ -47,10 +53,9 @@ h4 {
     align-items: center;
 }
 
-.story{
-    margin: 5rem;
-    background-color: #EFAA71;
+.story {
+    margin: 0.5rem;
+    background-color: #25389B;
     text-align: center;
-    color: red;
+    color: #ffffff;
 }
-

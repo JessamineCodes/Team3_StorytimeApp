@@ -1,7 +1,8 @@
+
 body {
     background-color: #FDF9D4;
     font-family: 'Itim', sans-serif;
-    color: #494949;;
+    color: #494949;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -16,11 +17,16 @@ h1 {
 
 h4 {
     font-size: 1.5rem;
-    background-color:  #25389B;
+    background-color: #25389B;
     color: white;
     padding: 1em;
-    margin: 1em;
+    /* margin: 1em; */
     border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+h4:hover {
+    background-color: #1a2e73; /* Change color on hover */
 }
 
 p {
@@ -32,8 +38,10 @@ p {
 
 .button-container {
     display: flex;
-    justify-content: center;  
+    justify-content: center;
 }
 
-
-
+.button-container a {
+    margin: 0 20px;
+    text-decoration: none;
+}
