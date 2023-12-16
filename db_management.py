@@ -10,12 +10,19 @@ from dotenv import load_dotenv
 import os
 
 # import story class instance to retrieve child's name and story text
-from StoryClasses import dinosaur_story_instance, dinosaur_story, pokemon_story_instance, pokemon_story, \
-    space_story_instance, space_story
+from StoryClasses import dinosaur_story_instance, dinosaur_story, pokemon_story_instance, pokemon_story, space_story_instance, space_story
 
 from pprint import pprint
 
 load_dotenv()
+
+
+db_config = {
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASS'),
+    'database': DB_NAME,
+    'host': DB_HOST
+}
 
 
 # create error for DB connection exception handling
@@ -28,14 +35,16 @@ class QueryExecutionError(Exception):
     pass
 
 
+
 # create class to create, connect to and populate stories database
 class DatabaseHandler:
+
     def __init__(self):
         try:
             self.connection = mysql.connector.connect(
-                host=DB_HOST,
-                user=os.getenv('DB_USER'),
-                password=os.getenv('DB_PASS'),
+                host=db_config['host'],
+                user=db_config['user'],
+                password=db_config['password'],
             )
 
             self.cursor = self.connection.cursor()
@@ -43,6 +52,7 @@ class DatabaseHandler:
             # Create the database if it doesn't exist
             self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
             self.connection.commit()
+            print("storybook db created") # remove
 
             # Switch to the specified database
             self.cursor.execute(f"USE {DB_NAME}")
@@ -58,11 +68,11 @@ class DatabaseHandler:
                 CREATE TABLE IF NOT EXISTS users (
                     UserID INT PRIMARY KEY AUTO_INCREMENT,
                     Username VARCHAR(50) NOT NULL,
-                    Email VARCHAR(100) NOT NULL UNIQUE,
+                    Email VARCHAR(100) NOT NULL,
                     PasswordHash VARCHAR(255) NOT NULL,
                     DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP
                     )
-                """)
+                """) # UNIQUE constraint in Email
 
             self.connection.commit()  # Commit the changes
             print("Table users added to storybook DB")
@@ -102,6 +112,7 @@ class DatabaseHandler:
             else:
                 cursor.execute(query)
             self.connection.commit()
+            return True
         except Exception as e:
             print(f"Error executing query: {e}")
             raise QueryExecutionError('Failed to execute query.')
@@ -168,27 +179,28 @@ if __name__ == '__main__':
         story_manager = StoryManager()
 
         # # Insert user into the MySQL database users table
-        # story_manager.insert_user("megan", "megan@me6gan.com", "2345")
-        #
-        # # # Retrieve the latest ID
+        # story_manager.insert_user("megan", "megan@megan.com", "1234")
+        # #
+        # # # # Retrieve the latest ID
         # user_id = story_manager.fetch_user_id()
         # print(f"userID = {user_id}")
-        #
-        # # # Retrieve specific user ID
-        # # user_id = story_manager.fetch_user_id("pam@pam.com")
-        #
-        # # Insert the space story text into the MySQL database
+        # print(type(user_id))
+        # #
+        # # # # Retrieve specific user ID
+        # # # user_id = story_manager.fetch_user_id("pam@pam.com")
+        # #
+        # # # Insert the space story text into the MySQL database
         # space_story_instance.user_id = user_id
         # story_manager.insert_story(space_story_instance, space_story)
         #
-        # # Insert the dinosaur story text into the MySQL database
+        # # # Insert the dinosaur story text into the MySQL database
         # dinosaur_story_instance.user_id = user_id
         # story_manager.insert_story(dinosaur_story_instance, dinosaur_story)
-        #
-        # # Insert the pokemon story text into the MySQL database
+        # #
+        # # # Insert the pokemon story text into the MySQL database
         # pokemon_story_instance.user_id = user_id
         # story_manager.insert_story(pokemon_story_instance, pokemon_story)
-        #
+        # #
         # # Fetch all stories for a specific child (pprint used: list of tuples)
         # pprint(story_manager.fetch_all_child_stories(["Jo"]))
         #
@@ -200,3 +212,4 @@ if __name__ == '__main__':
         story_manager.close_connection()
 
 db_handler = None
+
