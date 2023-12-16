@@ -28,7 +28,7 @@ def select_theme():
 @app.route('/create/<theme>', methods=['GET', 'POST'])
 def create(theme):
     if request.method == 'POST':
-        db_handler = DatabaseHandler()
+        db_handler = db_manager
 
         child_name = request.form['child_name']
         child_pronouns = request.form['child_pronouns']

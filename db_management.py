@@ -97,7 +97,7 @@ class DatabaseHandler:
 
     # query to write to the database
     def execute_query(self, query, data=None):
-
+        cursor = None
         try:
             cursor = self.connection.cursor()
             if data:
@@ -114,14 +114,14 @@ class DatabaseHandler:
             print(f"Error executing query: {e}")
             raise QueryExecutionError('Failed to execute query.')
         finally:
-            cursor.close()
+            if cursor is not None:
+                cursor.close()
 
     # query to read the database
     def fetch_query(self, query, data=None):
         cursor = None
         try:
             cursor = self.connection.cursor()
-
             cursor.execute(query, data)
             print("query executed: read from storybook DB")
             return cursor.fetchall()
