@@ -2,6 +2,9 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta charset="UTF-8">
         <title>Select Theme</title>
         <link rel="stylesheet" href="/static/theme.css">
         <link href="https://fonts.googleapis.com/css2?family=Miltonian+Tattoo&display=swap" rel="stylesheet">
@@ -13,21 +16,18 @@
         <h2> Select a theme </h2>
         <form action="/theme" method="post">
             <div class="themes-container">
-                <div class="space">
+                <button type="submit" name="theme" value="space" class="theme-card space">
                     <h4>Space</h4>
-                    <img src="/static/images/space/astronaught.jpeg" alt="space" id="space">
-                    <button type="submit" name="theme" value="space">Select</button>
-                </div>
-                <div class="dinosaur">
-                    <h4>Dinosaur</h4>
-                    <img src="/static/images/dinosaur/dinosaur.png" alt="dino" id="dinosaur">
-                    <button type="submit" name="theme" value="dinosaur">Select</button>
-                </div>
-                <div class="pokemon">
-                    <h4>Pokemon</h4>
-                    <img src="/static/images/pokemon/pokemon.png" alt="pokemon" id="pokemon">
-                    <button type="submit" name="theme" value="pokemon">Select</button>
-                </div>
+                    <img src="/static/images/space/space.png" alt="space" id="space">
+                </button>
+                <button type="submit" name="theme" value="dinosaur" class="theme-card dinosaur">
+                        <h4>Dinosaur</h4>
+                        <img src="/static/images/dinosaur/dinosaur.png" alt="dino" id="dinosaur">
+                </button>        
+                <button type="submit" name="theme" value="pokemon" class="theme-card pokemon">
+                        <h4>Pokemon</h4>
+                        <img src="/static/images/pokemon/pokemon.png" alt="pokemon" id="pokemon"> 
+                </button>
             </div>
         </form>
     </body>

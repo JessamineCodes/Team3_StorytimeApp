@@ -1,0 +1,42 @@
+body {
+    background-color: #FDF9D4;
+    text-align: center;
+}
+
+h1{
+    font-family: 'Miltonian Tattoo', serif;
+    font-size: 5rem;
+}
+
+p, h4 {
+    font-family: itim;
+    font-size: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p{
+    font-family: itim;
+    font-size: 1.5rem;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h4 {
+    background-color: #25389B;
+    color: white;
+    width: fit-content;
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#book{
+    height: 300px;
+    width: 400px;
+    padding: 2rem;
+}
+
