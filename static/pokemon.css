@@ -1,0 +1,89 @@
+body {
+    background-color: #EFAA71;
+    font-family: itim;
+    text-align: center;
+}
+
+
+h1  {
+    text-align: center;
+    font-size: 5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 0;
+}
+
+h3 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+#space {
+    height: 600px;
+    width: 600px;
+}
+
+
+.content-container {
+    display: flex; 
+    align-items: center; 
+    margin: 1rem;
+    padding: 1rem;
+    justify-content: space-evenly;
+}
+
+.form-container {
+    border-radius: 10px;
+    padding: 2rem;
+    background-color: #F8DF99;
+}
+form {
+    text-align: left;
+}
+
+input[type="text"] {
+    padding: 5px; 
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    background-color: #EFAA71; 
+    color: white;
+    padding: 10px 20px; 
+    border-radius: 5px;
+    display: block;
+    margin: 20px auto;
+}
+
+button:hover {
+    background-color: #ea8d40;
+    cursor: pointer;
+}
+
+
+
+button {
+    background-color: #25389B;
+    text-align: center;
+    color: white;
+    width: fit-content;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    margin: 0.5rem;
+    transition: background-color 0.3s ease;
+    font-family: 'Miltonian Tattoo', serif;
+    font-size: 1.5rem;
+}
+
+.home-button a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #5365bf;
+    cursor: pointer;
+}

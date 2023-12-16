@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/saved.css">
+    <link href="https://fonts.googleapis.com/css2?family=Miltonian&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Miltonian+Tattoo&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet'>
+    <title>Saved Stories</title>
+</head>
+<body>
+    <h1>Your Storybook</h1>
+    <h2>Saved Stories</h2>
+        <div class = "story-card">
+            {% for story_id, title, content, child_name in stories %}
+            <a style= "text-decoration: none;" href="/story/{{ story_id }}" class="story-link">
+                <div class="story">
+                    <h3>{{ title }}</h3>
+                </div>
+            </a>
+            
+            {% else %}
+                <p>No stories found</p>
+            {% endfor %}
+        </div>
+        <div class = "new-story-card">      
+            <h2>Stories Waiting To Be Written</h2>
+            <a style= "text-decoration: none;" href="/theme">
+                <h4>Create Your Next Adventure ✨ </h4>
+            </a>
+        </div>   
+</body>
+</html>

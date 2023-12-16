@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Story</title>
+    <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Miltonian+Tattoo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Miltonian&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/{{ theme }}.css">
+</head>
+<body>
+    <button class="home-button">
+        <a class="home-link" href="/home">Home</a>
+    </button>
+    <h1>Generate Your Personalised Story</h1>
+    <div class="content-container">
+        <img src="" alt="{{ theme }}" id="{{ theme }}">
+        <div class="form-container">
+            <h2>Let's Get Some Details About You</h2>
+            <form action="/create/{{ theme }}" method="post" id="storyForm">
+                <input type="hidden" name="user_id" value="1">
+                <h3>Name:</h3>
+                <input type="text" name="child_name" placeholder="Child's Name" required>
+                <h3>Age:</h3>
+                <input type="number" name="child_age" placeholder="Child's Age" required min="1">
+                <h3>Pronouns:</h3>
+                <input type="text" name="child_pronouns" placeholder="Enter pronouns (e.g., she/her)" required>
+
+                <button type="submit">Create Story</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.getElementById('{{ theme }}').src = '/static/images/{{ theme }}/{{ theme }}.png';
+    </script>
+</body>
+</html>

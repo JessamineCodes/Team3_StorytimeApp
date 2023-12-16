@@ -1,5 +1,6 @@
 body {
-    background-color: #FDF9D4
+    background-color: #FDF9D4;
+    text-align: center;
 }
 
 h1,h2{
@@ -48,13 +49,13 @@ h4{
 
 .space{
     background-color: #96C5FD;
-    color: #5793DB;
+    color: #4576b1;
     border-radius: 10px;
 }
 
 .dinosaur{
     background-color: #ABFFCC;
-    color: #78D2B3;
+    color: #4e8c76;
     border-radius: 10px;
 
 }
@@ -67,4 +68,50 @@ h4{
 
 button[type="submit"] {
     margin: 20px auto;
+}
+
+.pokemon:hover {
+    background-color: #ea8d40;
+    cursor: pointer;
+}
+.dinosaur:hover {
+    background-color: #78D2B3;
+    cursor: pointer;
+}
+.space:hover {
+    background-color: #59a0f7;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+    .themes-container {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: center; /* Center items horizontally on smaller screens */
+    }
+
+    .space, .dinosaur, .pokemon {
+        margin: 1rem; /* Adjust margin for better spacing on smaller screens */
+    }
+}
+button {
+    background-color: #25389B;
+    text-align: center;
+    color: white;
+    width: fit-content;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    margin: 0.5rem;
+    transition: background-color 0.3s ease;
+    font-family: 'Miltonian Tattoo', serif;
+    font-size: 1.5rem;
+}
+
+.home-button a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #5365bf;
+    cursor: pointer;
 }

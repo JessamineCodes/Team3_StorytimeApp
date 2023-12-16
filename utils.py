@@ -15,3 +15,7 @@ def get_story_by_id(story_id, db_handler):
     finally:
         # can't close the connection here because it's closed in the calling function
         pass
+
+def find_stories_by_user_id(user_id, db_handler):
+    query = "SELECT StoryID, Title, Content, ChildName FROM stories WHERE UserId = %s"
+    return db_handler.fetch_query(query, (user_id,))

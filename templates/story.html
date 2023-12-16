@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- <title>Story {{ story_id }}</title> -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='story.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Miltonian+Tattoo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Miltonian&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet'>
 </head>
 <body>
+  <button class="home-button">
+    <a class="home-link" href="/home">Home</a>
+</button>
     <div class="container">
       <h1>{{ story[0] }}</h1>
       {% if story %}
@@ -12,6 +20,14 @@
       {% else %}
         <p>Story not found</p>
       {% endif %}
+      <img src="/static/images/book.png" alt="book" id="book">
+    <div class="buttons-container">
+    
+     <button class="nav-button" onclick="window.location.href='/saved/1'">View my saved stories</button>
+      
+
+     <button class="nav-button" onclick="window.location.href='/theme'">Choose a new theme</button>
+    </div>
     </div>
 </body>
 </html>

@@ -97,11 +97,15 @@ class DatabaseHandler:
 
     # query to write to the database
     def execute_query(self, query, data=None):
-
+        cursor = None
         try:
             cursor = self.connection.cursor()
             if data:
                 cursor.execute(query, data)
+                self.connection.commit()
+                if query.lower().startswith('insert'):
+                    # Return the ID of the last inserted row
+                    return cursor.lastrowid
             else:
                 cursor.execute(query)
             self.connection.commit()
@@ -110,26 +114,24 @@ class DatabaseHandler:
             print(f"Error executing query: {e}")
             raise QueryExecutionError('Failed to execute query.')
         finally:
-            cursor.close()
+            if cursor is not None:
+                cursor.close()
 
     # query to read the database
     def fetch_query(self, query, data=None):
         cursor = None
         try:
             cursor = self.connection.cursor()
-
             cursor.execute(query, data)
-
             print("query executed: read from storybook DB")
-
             return cursor.fetchall()
-
         except Exception as e:
             print(f"Error executing fetch query: {e}")
             raise QueryExecutionError('Failed to execute fetch query.')
         finally:
             if cursor is not None:
                 cursor.close()
+
 
     def close_connection(self):
         if self.connection.is_connected():
