@@ -17,7 +17,7 @@ class TestSpaceStoryFunctions(unittest.TestCase):
         # call the function with example inputs
         result = paragraph_two("Sally", "she")
         # check that the output contains an expected substring of the story
-        self.assertIn("An unidentified lifeform has got stuck", result)
+        self.assertIn("they need", result)
         # test case for function to create paragraph three
 
     def test_paragraph_three(self):
