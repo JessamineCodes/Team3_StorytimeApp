@@ -141,19 +141,14 @@
           {% endif %}
           {% endfor %}
           </div>
+          
           <!--  Checking for the keyword pokemon in text to add music soundtrack -->
            {% if 'Pokémon' in story %}
             <button class="MusicButton">Music On 🔈</button>
             <audio id="PokémonAudio" src="{{ url_for('static', filename='Audio/Pokémon.mp3') }}"></audio>
 
-
-
-
            {% endif %}
 
-
-
-        
       {% else %}
         <p>Story not found</p>
       {% endif %}
