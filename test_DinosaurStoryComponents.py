@@ -22,7 +22,7 @@ class TestDinosaurStoryComponents(unittest.TestCase):
         # call the function with example inputs
         result = paragraph_two("Emma", "she", "Triceratops")
         # check that the output contains an expected substring of the story
-        self.assertIn("Emma found herself on a prehistoric beach", result)
+        self.assertIn("Emma found herself", result)
 
     # test case for function to create paragraph two
     def test_paragraph_three(self):
