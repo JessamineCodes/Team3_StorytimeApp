@@ -19,8 +19,11 @@
                 <h3>Age:</h3>
                 <input type="number" name="child_age" placeholder="Child's Age" required min="1">
                 <h3>Pronouns:</h3>
-                <input type="text" name="child_pronouns" placeholder="Enter pronouns (e.g., she/her)" required>
-
+                <div class="pronoun-radios">
+                    <label><input type="radio" name="child_pronouns" value="she" required> She/Her</label><br>
+                    <label><input type="radio" name="child_pronouns" value="he" required> He/Him</label><br>
+                    <label><input type="radio" name="child_pronouns" value="they" required> They/Them</label><br>
+                </div>
                 <button type="submit">Create Story</button>
             </form>
         </div>
