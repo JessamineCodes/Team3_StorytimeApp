@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import sql_queries
 from story_classes import  SpaceStory, DinosaurStory, PokemonStory
 from db_management import StoryManager
-from sql_queries import insert_story
+from sql_queries import insert_story, fetch_all_user_stories
 app = Flask(__name__)
 
 # db_manager = DatabaseHandler()
@@ -53,8 +53,10 @@ def create(theme):
         # Insert the story into the database
         story_title = f"{child_name}'s {theme.title()} Story"
         story_manager = StoryManager()
-        story_id = story_manager.execute_query(insert_story, (story_title, story_text, child_name, user_id))
+        story_manager.execute_query(insert_story, (story_title, story_text, child_name, user_id))
+        story_id = story_manager.fetch_all_user_stories(user_id)[-1]
 
+        print(story_id)
         return redirect(url_for('show_story', story_id=story_id))
 
     return render_template('create.html', theme=theme)
