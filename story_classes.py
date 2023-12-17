@@ -2,8 +2,8 @@
 from space_story_components import space_story_text
 # Import method for creating dinosaur story text from DinosaurStoryComponents.py
 from DinosaurStoryComponents import dinosaur_story_text
-# Import method for creating pokemon story text from PokemonStoryComponents.py
-from PokemonStoryComponents import pokemon_story_text
+# Import method for creating pokemon story text from pokemon_story_components.py
+from pokemon_story_components import pokemon_story_text
 
 # Import abstract base class module
 import abc
