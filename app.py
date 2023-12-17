@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
-from story_classes import Story, SpaceStory, DinosaurStory, PokemonStory
-from db_management import DatabaseHandler
+
+import sql_queries
+from story_classes import  SpaceStory, DinosaurStory, PokemonStory
+from db_management import StoryManager
 from sql_queries import insert_story
 app = Flask(__name__)
 
-db_manager = DatabaseHandler()
+# db_manager = DatabaseHandler()
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -29,7 +31,7 @@ def select_theme():
 @app.route('/create/<theme>', methods=['GET', 'POST'])
 def create(theme):
     if request.method == 'POST':
-        db_handler = db_manager
+        # db_handler = db_manager
 
         child_name = request.form['child_name']
         child_pronouns = request.form['child_pronouns']
@@ -50,7 +52,8 @@ def create(theme):
 
         # Insert the story into the database
         story_title = f"{child_name}'s {theme.title()} Story"
-        story_id = db_handler.execute_query(insert_story, (story_title, story_text, child_name, user_id))
+        story_manager = StoryManager()
+        story_id = story_manager.execute_query(insert_story, (story_title, story_text, child_name, user_id))
 
         return redirect(url_for('show_story', story_id=story_id))
 
@@ -59,8 +62,8 @@ def create(theme):
 
 @app.route('/story/<int:story_id>')
 def show_story(story_id):
-    db_handler = db_manager  # Ensure this is properly initialized
-    story = Story.find_story_by_id(story_id, db_handler)
+    story_manager = StoryManager()
+    story = story_manager.fetch_query(sql_queries.fetch_story_by_id, story_id)
 
     if story:
         return render_template('story.html', story=story)
@@ -71,8 +74,8 @@ def show_story(story_id):
 
 @app.route('/saved/<int:user_id>')
 def show_saved_stories(user_id):
-    db_handler = db_manager  # Ensure db_manager is an instance of DatabaseHandler
-    stories = Story.show_stories_by_user_id(user_id, db_handler)
+    story_manager = StoryManager()
+    stories = story_manager.fetch_query(sql_queries.fetch_all_user_stories, user_id)
 
     if stories:
         return render_template('saved.html', stories=stories)

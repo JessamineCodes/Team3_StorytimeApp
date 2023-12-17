@@ -16,10 +16,10 @@
     </button>
   </a>
     <div class="container">
-      <h1>{{ story[0] }}</h1>
+      <h1>{{ story[0][0] }}</h1>
       {% if story %}
        <!-- for loop with string split checking for story/text keywords -->
-        {% for section in story[1].split(' ') %}
+        {% for section in story[0][1].split(' ') %}
         <!-- if a keyword is detected in the text the for loop assigns a button
              and audio file to that particular keyword -->
 
