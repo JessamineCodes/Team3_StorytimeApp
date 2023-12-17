@@ -10,9 +10,11 @@
     <link href='https://fonts.googleapis.com/css?family=Itim' rel='stylesheet'>
 </head>
 <body>
-  <button class="home-button">
-    <a class="home-link" href="/home">Home</a>
-</button>
+  <a class="home-link" href="/home">
+    <button class="home-button">
+        Home
+    </button>
+  </a>
     <div class="container">
       <h1>{{ story[0] }}</h1>
       {% if story %}
@@ -36,19 +38,19 @@
           {% elif 'grabbed' in section %}
              <button class="grabbedButton">grabbed 🔈</button>
              <audio id="grabbedAudio" src="{{ url_for('static', filename='audio/grabbed.wav') }}"></audio>
- 
+
           {% elif 'rainy' in section %}
              <button class="rainyButton">rainy 🔈</button>
              <audio id="rainyAudio" src="{{ url_for('static', filename='audio/rainy.wav') }}"></audio>
- 
+
           {% elif 'windy' in section %}
              <button class="windyButton">windy 🔈</button>
              <audio id="windyAudio" src="{{ url_for('static', filename='audio/windy.wav') }}"></audio>
- 
+
           {% elif 'stormy' in section %}
              <button class="stormyButton">stormy 🔈</button>
              <audio id="stormyAudio" src="{{ url_for('static', filename='audio/stormy.wav') }}"></audio>
- 
+
           {% elif 'jungle' in section %}
              <button class="jungleButton">jungle 🔈</button>
              <audio id="jungleAudio" src="{{ url_for('static', filename='audio/jungle.wav') }}"></audio>
@@ -80,7 +82,7 @@
           {% elif 'flash' in section %}
              <button class="flashButton">flash 🔈</button>
              <audio id="flashAudio" src="{{ url_for('static', filename='audio/flash.wav') }}"></audio>
- 
+
           {% elif 'alarm' in section %}
              <button class="alarmButton">alarm 🔈</button>
              <audio id="alarmAudio" src="{{ url_for('static', filename='audio/alarm.wav') }}"></audio>
@@ -141,7 +143,7 @@
           {% endif %}
           {% endfor %}
           </div>
-          
+
           <!--  Checking for the keyword pokemon in text to add music soundtrack -->
            {% if 'Pokémon' in story %}
             <button class="MusicButton">Music On 🔈</button>
@@ -153,10 +155,10 @@
         <p>Story not found</p>
       {% endif %}
 
-    
+
 <script>
         // Javascript
-        
+
         // Audio file variables
             let audio1 = document.getElementById("roarAudio");
             let audio2 = document.getElementById("explosionAudio");
@@ -188,10 +190,10 @@
             let audio28 = document.getElementById("battleAudio");
             let audio29 = document.getElementById("missedAudio");
             let audio30 = document.getElementById("PokémonAudio");
-        
-        
+
+
         // Button and audio event triggers
-        
+
             let buttons1 = document.querySelectorAll('.roarButton');
             buttons1.forEach(button => {
                 button.addEventListener('click', function() {
@@ -201,7 +203,7 @@
                     });
                 });
             });
-        
+
             let buttons2 = document.querySelectorAll('.explosionButton');
             buttons2.forEach(button => {
                 button.addEventListener('click', function() {
@@ -211,7 +213,7 @@
                     });
                 });
             });
-        
+
                let buttons3 = document.querySelectorAll('.portalButton');
             buttons3.forEach(button => {
                 button.addEventListener('click', function() {
@@ -221,7 +223,7 @@
                     });
                 });
             });
-        
+
              let buttons4 = document.querySelectorAll('.grabbedButton');
             buttons4.forEach(button => {
                 button.addEventListener('click', function() {
@@ -231,8 +233,8 @@
                     });
                 });
             });
-        
-        
+
+
                 let buttons5 = document.querySelectorAll('.rainyButton');
             buttons5.forEach(button => {
                 button.addEventListener('click', function() {
@@ -242,7 +244,7 @@
                     });
                 });
             });
-        
+
                 let buttons6 = document.querySelectorAll('.windyButton');
             buttons6.forEach(button => {
                 button.addEventListener('click', function() {
@@ -252,7 +254,7 @@
                     });
                 });
             });
-        
+
                 let buttons7 = document.querySelectorAll('.stormyButton');
             buttons7.forEach(button => {
                 button.addEventListener('click', function() {
@@ -262,7 +264,7 @@
                     });
                 });
             });
-        
+
                 let buttons8 = document.querySelectorAll('.jungleButton');
             buttons8.forEach(button => {
                 button.addEventListener('click', function() {
@@ -272,7 +274,7 @@
                     });
                 });
             });
-        
+
                 let buttons9 = document.querySelectorAll('.roaringButton');
             buttons9.forEach(button => {
                 button.addEventListener('click', function() {
@@ -282,7 +284,7 @@
                     });
                 });
             });
-        
+
                  let buttons10 = document.querySelectorAll('.roaredButton');
             buttons10.forEach(button => {
                 button.addEventListener('click', function() {
@@ -292,7 +294,7 @@
                     });
                 });
             });
-        
+
                  let buttons11 = document.querySelectorAll('.beachButton');
             buttons11.forEach(button => {
                 button.addEventListener('click', function() {
@@ -302,7 +304,7 @@
                     });
                 });
             });
-        
+
                  let buttons12 = document.querySelectorAll('.cryingButton');
             buttons12.forEach(button => {
                 button.addEventListener('click', function() {
@@ -312,7 +314,7 @@
                     });
                 });
             });
-        
+
                  let buttons13 = document.querySelectorAll('.breakButton');
             buttons13.forEach(button => {
                 button.addEventListener('click', function() {
@@ -322,7 +324,7 @@
                     });
                 });
             });
-        
+
                  let buttons14 = document.querySelectorAll('.tinyButton');
             buttons14.forEach(button => {
                 button.addEventListener('click', function() {
@@ -332,7 +334,7 @@
                     });
                 });
             });
-        
+
                  let buttons15 = document.querySelectorAll('.flashButton');
             buttons15.forEach(button => {
                 button.addEventListener('click', function() {
@@ -342,7 +344,7 @@
                     });
                 });
             });
-        
+
                      let buttons16 = document.querySelectorAll('.alarmButton');
             buttons16.forEach(button => {
                 button.addEventListener('click', function() {
@@ -352,7 +354,7 @@
                     });
                 });
             });
-        
+
                      let buttons17 = document.querySelectorAll('.suitButton');
             buttons17.forEach(button => {
                 button.addEventListener('click', function() {
@@ -362,7 +364,7 @@
                     });
                 });
             });
-        
+
                      let buttons18 = document.querySelectorAll('.trappedButton');
             buttons18.forEach(button => {
                 button.addEventListener('click', function() {
@@ -372,7 +374,7 @@
                     });
                 });
             });
-        
+
                      let buttons19 = document.querySelectorAll('.rubbingButton');
             buttons19.forEach(button => {
                 button.addEventListener('click', function() {
@@ -382,7 +384,7 @@
                     });
                 });
             });
-        
+
                      let buttons20 = document.querySelectorAll('.ateButton');
             buttons20.forEach(button => {
                 button.addEventListener('click', function() {
@@ -392,7 +394,7 @@
                     });
                 });
             });
-        
+
                      let buttons21 = document.querySelectorAll('.warblingButton');
             buttons21.forEach(button => {
                 button.addEventListener('click', function() {
@@ -402,7 +404,7 @@
                     });
                 });
             });
-        
+
                      let buttons22 = document.querySelectorAll('.chime-likeButton');
             buttons22.forEach(button => {
                 button.addEventListener('click', function() {
@@ -412,7 +414,7 @@
                     });
                 });
             });
-        
+
                      let buttons23 = document.querySelectorAll('.bubblingButton');
             buttons23.forEach(button => {
                 button.addEventListener('click', function() {
@@ -422,7 +424,7 @@
                     });
                 });
             });
-        
+
                      let buttons24 = document.querySelectorAll('.whistleButton');
             buttons24.forEach(button => {
                 button.addEventListener('click', function() {
@@ -441,7 +443,7 @@
                     });
                 });
             });
-        
+
                       let buttons26 = document.querySelectorAll('.ranButton');
             buttons26.forEach(button => {
                 button.addEventListener('click', function() {
@@ -451,7 +453,7 @@
                     });
                 });
             });
-        
+
                          let buttons27 = document.querySelectorAll('.growlButton');
             buttons27.forEach(button => {
                 button.addEventListener('click', function() {
@@ -461,8 +463,8 @@
                     });
                 });
             });
-        
-        
+
+
                          let buttons28 = document.querySelectorAll('.battleButton');
             buttons28.forEach(button => {
                 button.addEventListener('click', function() {
@@ -472,7 +474,7 @@
                     });
                 });
             });
-        
+
                          let buttons29 = document.querySelectorAll('.missedButton');
             buttons29.forEach(button => {
                 button.addEventListener('click', function() {
@@ -482,7 +484,7 @@
                     });
                 });
             });
-        
+
                          let buttons30 = document.querySelectorAll('.MusicButton');
                 buttons30.forEach(button => {
                 button.addEventListener('click', function() {
@@ -492,18 +494,18 @@
                     });
                 });
             });
-        
-        
+
+
     </script>
 
       <img src="/static/images/book.png" alt="book" id="book">
     <div class="buttons-container">
-    
+
      <button class="nav-button" onclick="window.location.href='/saved/1'">View my saved stories</button>
-      
+
 
      <button class="nav-button" onclick="window.location.href='/theme'">Choose a new theme</button>
     </div>
-    
+
 </body>
 </html>
