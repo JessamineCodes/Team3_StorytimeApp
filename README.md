@@ -110,26 +110,27 @@ _All team members played a crucial role in developing Once Upon AI Time, contrib
  ┣ 📜.DS_Store
  ┣ 📜.env
  ┣ 📜.gitignore
- ┣ 📜DinosaurStoryAPICalls.py
- ┣ 📜DinosaurStoryComponents.py
- ┣ 📜PokemonStoryApiCalls.py
- ┣ 📜PokemonStoryComponents.py
  ┣ 📜README.md
- ┣ 📜SQL_queries.py
- ┣ 📜SpaceStoryAPICalls.py
- ┣ 📜SpaceStoryComponents.py
- ┣ 📜StoryClasses.py
+ ┣ 📜RUN_THIS_demo.py
  ┣ 📜app.py
  ┣ 📜config.py
  ┣ 📜db_management.py
+ ┣ 📜dinosaur_story_api_calls.py
+ ┣ 📜dinosaur_story_components.py
+ ┣ 📜mock_data_generator.py
+ ┣ 📜pokemon_story_api_calls.py
+ ┣ 📜pokemon_story_components.py
  ┣ 📜pronouns.py
  ┣ 📜requirements.txt
- ┣ 📜test_DinosaurStoryComponents.py
- ┣ 📜test_PokemonStoryComponents.py
- ┣ 📜test_SpaceStoryComponents.py
- ┣ 📜test_StoryAPICalls.py
- ┣ 📜test_Story_Classes.py
+ ┣ 📜space_story_api_calls.py
+ ┣ 📜space_story_components.py
+ ┣ 📜sql_queries.py
+ ┣ 📜story_classes.py
  ┣ 📜test_data_generation.py
- ┣ 📜test_script.py
+ ┣ 📜test_dinosaur_story_components.py
+ ┣ 📜test_pokemon_story_components.py
+ ┣ 📜test_space_story_components.py
+ ┣ 📜test_story_api_calls.py
+ ┣ 📜test_story_classes.py
  ┗ 📜utils.py
 
