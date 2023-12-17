@@ -9,7 +9,7 @@ from pokemon_story_components import pokemon_story_text
 import abc
 
 # Import method for getting a specific story from utils
-from SQL_queries import fetch_all_user_stories, fetch_story_by_id
+from sql_queries import fetch_all_user_stories, fetch_story_by_id
 
 
 # Class for creating a story object - initialised with 3 inputs about the child and chosen theme
