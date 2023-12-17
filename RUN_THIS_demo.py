@@ -1,6 +1,5 @@
-from db_management import StoryManager, DatabaseHandler
+from db_management import StoryManager, SetUpAndTearDownHandler, DB_CONFIG
 import mock_data_generator as mock
-
 
 
 def are_you_ready():
@@ -15,17 +14,18 @@ def are_you_ready():
             are_you_ready()
 
 
-# def query_data():
-#         data = input("Would you like to add some mock data to the database? yes or no. ")
-#         if data == "yes":
-#             print("\nPopulating database.\n")
-#             add_mock_data(mock.parents, mock.story_count)
-#             print("\nDatabase populated. Please make your way to app.py and launch our story generator app!\n")
-#         elif data == "no":
-#             print("No Problem. Please make your way to app.py and launch our story generator app!")
-#         else:
-#             print("\nTry again - yes or no, please! \n")
-#             query_data()
+def query_data():
+        data = input("Would you like to add some mock data to the database? yes or no. ")
+        if data == "yes":
+            print("\nPopulating database.\n")
+            add_mock_data(mock.parents, mock.story_count)
+            print("\nDatabase populated. Please make your way to app.py and launch our story generator app!\n")
+        elif data == "no":
+            print("No Problem. Please make your way to app.py and launch our story generator app!")
+        else:
+            print("\nTry again - yes or no, please! \n")
+            query_data()
+
 
 # Populating database with mock data via mock_data_generator
 def add_mock_data(users, stories):
@@ -38,14 +38,22 @@ def add_mock_data(users, stories):
         y += 1
 
 
+def teardown():
+    SetUpAndTearDownHandler.teardown(DB_CONFIG)
+
+
+def setup():
+    handler = SetUpAndTearDownHandler(DB_CONFIG)
+    handler.setup()
+    query_data()
+
+
 def main():
     print("----------------------------------")
     print("             WELCOME              ")
     print("----------------------------------")
     are_you_ready()
-    DatabaseHandler()
-    add_mock_data(mock.parents, mock.story_count)
-    print("\nDatabase populated. Please make your way to app.py and launch our story generator app!\n")
+    setup()
     print("Goodbye")
 
 

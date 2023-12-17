@@ -1,7 +1,5 @@
 # import mysql.connector to connect to database
 import mysql.connector
-
-import SQL_queries
 # import user credentials from config file
 from config import DB_HOST, DB_NAME
 # dotenv module allows for .env file access
@@ -23,10 +21,6 @@ DB_CONFIG = {
     'database': DB_NAME,
     'host': DB_HOST
 }
-
-
-
-
 
 # create class to create, connect to and populate stories database
 class DatabaseHandler:
@@ -65,10 +59,15 @@ class DatabaseHandler:
     def fetch_query(self, query, data=None):
         cursor = None
         try:
+            if data:
+                data = (data,)
+
             cursor = self.connection.cursor()
             cursor.execute(query, data)
-            print('fetch query')
+            print(query)
+            print(data)
             return cursor.fetchall()
+
 
         except Exception as e:
             print(f"Error executing fetch query: {e}")
@@ -148,7 +147,7 @@ class SetUpAndTearDownHandler(DatabaseHandler):
             self.cursor.execute(f"DROP DATABASE {self.db_config['database']}")
             self.connection.commit()
 
-        except mysql.connector.Error as err:  # TEST THIS
+        except mysql.connector.Error as err:
             print(f"Database {self.db_config['database']} does not exist. Dropping db failed")
         self.close_connection()
 
@@ -182,10 +181,9 @@ class StoryManager(DatabaseHandler):
             return None
 
     def fetch_story_by_id(self, storyid):
-        result = self.fetch_query(SQL_queries.fetch_story_by_id, storyid)
+        result = self.fetch_query(sql_queries.fetch_story_by_id, storyid)
         if result:
-            return result[0]
+            return result
         else:
             return None
-
 
