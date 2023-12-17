@@ -47,7 +47,6 @@ class DatabaseHandler:
             else:
                 cursor.execute(query)
             self.connection.commit()
-            print('execute query reached')
             return True
         except Exception as e:
             print(f"Error executing query: {e}")
@@ -186,4 +185,3 @@ class StoryManager(DatabaseHandler):
             return result
         else:
             return None
-
