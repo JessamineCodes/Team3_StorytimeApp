@@ -59,3 +59,21 @@ h4 {
     text-align: center;
     color: #ffffff;
 }
+
+.story-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-self: center;
+}
+
+.story-row {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+}
+
+.story {
+    flex: 1 0 33%; 
+    align-items: center;
+}
