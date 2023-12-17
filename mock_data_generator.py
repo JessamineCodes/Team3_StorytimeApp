@@ -1,4 +1,3 @@
-# from StoryClasses import space_story_instance, space_story, dinosaur_story_instance, dinosaur_story
 from faker import Faker
 import random
 f = Faker()
@@ -56,18 +55,4 @@ for child in range(children):
         test_story_dict['userID'] = parentID
         test_story_dict['child_name'] = child_name
         list_story_dicts.append(test_story_dict)
-
-
-"""
-        db_handler = DatabaseHandler()
-        story_manager = StoryManager()
-        # Populating database with mock data via test_data_generation
-        for x in range (td.parents):
-            story_manager.insert_user(td.list_user_dicts[x]['username'], td.list_user_dicts[x]['email'], td.list_user_dicts[x]['password'])
-            x += 1
-
-        for x in range (td.total_stories):
-            db_handler.execute_query(SQL_queries.insert_story, (td.list_story_dicts[x]['title'], td.list_story_dicts[x]['content'], td.list_story_dicts[x]['child_name'], td.list_story_dicts[x]['userID']))
-            x += 1
-"""
 
