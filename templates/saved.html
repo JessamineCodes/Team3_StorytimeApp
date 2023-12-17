@@ -12,23 +12,27 @@
 <body>
     <h1>Your Storybook</h1>
     <h2>Saved Stories</h2>
-        <div class = "story-card">
-            {% for story_id, title, content, child_name in stories %}
-            <a style= "text-decoration: none;" href="/story/{{ story_id }}" class="story-link">
+    <div class="story-container">
+        {% for story_id, title, content, child_name in stories %}
+            {% if loop.index0 % 3 == 0 and not loop.first %} 
+                </div><div class="story-row"> 
+            {% endif %}
+            <a style="text-decoration: none;" href="/story/{{ story_id }}" class="story-link">
                 <div class="story">
                     <h3>{{ title }}</h3>
                 </div>
             </a>
-            
-            {% else %}
-                <p>No stories found</p>
-            {% endfor %}
-        </div>
-        <div class = "new-story-card">      
-            <h2>Stories Waiting To Be Written</h2>
-            <a style= "text-decoration: none;" href="/theme">
-                <h4>Create Your Next Adventure ✨ </h4>
-            </a>
-        </div>   
+        {% else %}
+            <p>No stories found</p>
+        {% endfor %}
+    </div>
+    
+    <div class="new-story-card">      
+        <h2>Stories Waiting To Be Written</h2>
+        <a style="text-decoration: none;" href="/theme">
+            <h4>Create Your Next Adventure ✨ </h4>
+        </a>
+    </div>
+    
 </body>
 </html>

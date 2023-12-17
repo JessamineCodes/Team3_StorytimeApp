@@ -1,6 +1,6 @@
 import unittest
 # import functions to be tested
-from DinosaurStoryComponents import (
+from dinosaur_story_components import (
     paragraph_one,
     paragraph_two,
     paragraph_three,

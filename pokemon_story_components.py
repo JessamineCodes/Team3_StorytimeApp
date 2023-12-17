@@ -1,5 +1,5 @@
-# Importing variables from API call in PokemonStoryApiCalls.py
-from PokemonStoryApiCalls import get_pokemon_info, p_name, p_ability, p_move, poke_type
+# Importing variables from API call in pokemon_story_api_calls.py
+from pokemon_story_api_calls import get_pokemon_info, p_name, p_ability, p_move, poke_type
 # import pronouns dictionary
 from pronouns import pronouns
 # import random module to allow for random selection of various story elements

@@ -16,7 +16,7 @@ def get_pokemon_info():
 
 
         response = requests.get(url)
-        response.raise_for_status() # If there the HTTP request returns unsecessful status code this will raise a HTTPError
+        response.raise_for_status() # If the HTTP request returns unsuccessful status code this will raise a HTTPError
 
 
         data = response.json()
@@ -33,7 +33,7 @@ def get_pokemon_info():
         return None, None 
     
     except KeyError as e:
-        # This will handle erros if expected keys are not found in API response
+        # This will handle errors if expected keys are not found in API response
         print(f"Key Error: {e}")
         return None, None
     

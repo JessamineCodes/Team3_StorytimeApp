@@ -1,6 +1,6 @@
 import unittest
 # import functions to be tested
-from SpaceStoryComponents import paragraph_one, paragraph_two, paragraph_three, space_story_text
+from space_story_components import paragraph_one, paragraph_two, paragraph_three, space_story_text
 
 
 # test class for functions to create space story components

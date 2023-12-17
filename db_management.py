@@ -8,8 +8,13 @@ from config import DB_HOST, DB_NAME
 from dotenv import load_dotenv
 # operating system dependent functionality
 import os
+# import exception classes from utils file
+from utils import DbConnectionError, QueryExecutionError
+# import sql queries from sql_queries file
+import sql_queries
 
 
+# Function to read a file that contains environment variables
 load_dotenv()
 
 DB_CONFIG = {
@@ -20,14 +25,7 @@ DB_CONFIG = {
 }
 
 
-# create error for DB connection exception handling
-class DbConnectionError(Exception):
-    pass
 
-
-# create error for query execution exception handling
-class QueryExecutionError(Exception):
-    pass
 
 
 # create class to create, connect to and populate stories database
@@ -163,21 +161,21 @@ class StoryManager(DatabaseHandler):
         self.execute_query(f"USE {db_config['database']}")
 
     def insert_user(self, username, email, password):
-        self.execute_query(SQL_queries.insert_user, (username, email, password))
+        self.execute_query(sql_queries.insert_user, (username, email, password))
 
     def insert_story(self, story_instance, content):
         title = story_instance.get_title()
-        self.execute_query(SQL_queries.insert_story,
+        self.execute_query(sql_queries.insert_story,
                            (title, content, story_instance.child_name, story_instance.user_id))
 
     def fetch_all_user_stories(self, userid):
-        result = self.fetch_query(SQL_queries.fetch_all_user_stories, userid)
+        result = self.fetch_query(sql_queries.fetch_all_user_stories, userid)
         if result:
             return [i[0] for i in result]
         return None
 
     def fetch_user_id(self):
-        result = self.fetch_query(SQL_queries.fetch_user)
+        result = self.fetch_query(sql_queries.fetch_user)
         if result:
             return result[0][0]
         else:
@@ -189,4 +187,5 @@ class StoryManager(DatabaseHandler):
             return result[0]
         else:
             return None
+
 
