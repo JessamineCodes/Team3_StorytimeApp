@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import patch, MagicMock
 # import the functions to be tested
 from DinosaurStoryAPICalls import get_random_dino_info
-from PokemonStoryApiCalls import get_pokemon_info
+from pokemon_story_api_calls import get_pokemon_info
 from space_story_api_calls import get_astronaut_name, get_no_iss_residents
 
 
@@ -45,8 +45,8 @@ class TestGetPokemonInfo(unittest.TestCase):
     # test case for function to retrieve pokemon information
     # patch decorator from unittest module used to mock the 'random.randit' and 'requests.get' functions
     # during test execution. Return value of the mocked random.rand.int set to always return the same value during test execution.
-    @patch('PokemonStoryApiCalls.random.randint', return_value=42)
-    @patch('PokemonStoryApiCalls.requests.get')
+    @patch('pokemon_story_api_calls.random.randint', return_value=42)
+    @patch('pokemon_story_api_calls.requests.get')
     def test_get_pokemon_info(self, mock_requests_get, mock_random_randint):
         # mock the 'response.json()' method to return a sample data
         sample_data = {
