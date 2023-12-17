@@ -16,10 +16,486 @@
     <div class="container">
       <h1>{{ story[0] }}</h1>
       {% if story %}
-        <p>{{ story[1] }}</p>
+       <!-- for loop with string split checking for story/text keywords -->
+        {% for section in story[1].split(' ') %}
+        <!-- if a keyword is detected in the text the for loop assigns a button
+             and audio file to that particular keyword -->
+
+          {% if 'roar.' in section %}
+             <button class="roarButton">roar 🔈</button>
+             <audio id="roarAudio" src="{{ url_for('static', filename='audio/roar.wav') }}"></audio>
+
+          {% elif 'explosion' in section %}
+             <button class="explosionButton">explosion 🔈</button>
+             <audio id="explosionAudio" src="{{ url_for('static', filename='audio/explosion.wav') }}"></audio>
+
+          {% elif 'portal' in section %}
+             <button class="portalButton">portal 🔈</button>
+             <audio id="portalAudio" src="{{ url_for('static', filename='audio/portal.wav') }}"></audio>
+
+          {% elif 'grabbed' in section %}
+             <button class="grabbedButton">grabbed 🔈</button>
+             <audio id="grabbedAudio" src="{{ url_for('static', filename='audio/grabbed.wav') }}"></audio>
+ 
+          {% elif 'rainy' in section %}
+             <button class="rainyButton">rainy 🔈</button>
+             <audio id="rainyAudio" src="{{ url_for('static', filename='audio/rainy.wav') }}"></audio>
+ 
+          {% elif 'windy' in section %}
+             <button class="windyButton">windy 🔈</button>
+             <audio id="windyAudio" src="{{ url_for('static', filename='audio/windy.wav') }}"></audio>
+ 
+          {% elif 'stormy' in section %}
+             <button class="stormyButton">stormy 🔈</button>
+             <audio id="stormyAudio" src="{{ url_for('static', filename='audio/stormy.wav') }}"></audio>
+ 
+          {% elif 'jungle' in section %}
+             <button class="jungleButton">jungle 🔈</button>
+             <audio id="jungleAudio" src="{{ url_for('static', filename='audio/jungle.wav') }}"></audio>
+
+          {% elif 'roaring' in section %}
+             <button class="roaringButton">roaring 🔈</button>
+             <audio id="roaringAudio" src="{{ url_for('static', filename='audio/roaring.wav') }}"></audio>
+
+          {% elif 'roared' in section %}
+            <button class="roaredButton">roared 🔈</button>
+            <audio id="roaredAudio" src="{{ url_for('static', filename='audio/roared.wav') }}"></audio>
+
+          {% elif 'beach' in section %}
+             <button class="beachButton">beach 🔈</button>
+            <audio id="beachAudio" src="{{ url_for('static', filename='audio/beach.wav') }}"></audio>
+
+          {% elif 'crying' in section %}
+             <button class="cryingButton">crying 🔈</button>
+             <audio id="cryingAudio" src="{{ url_for('static', filename='audio/crying.wav') }}"></audio>
+
+          {% elif 'break' in section %}
+             <button class="breakButton">break 🔈</button>
+             <audio id="breakAudio" src="{{ url_for('static', filename='audio/break.wav') }}"></audio>
+
+          {% elif 'tiny' in section %}
+             <button class="tinyButton">tiny 🔈</button>
+             <audio id="tinyAudio" src="{{ url_for('static', filename='audio/tiny.wav') }}"></audio>
+
+          {% elif 'flash' in section %}
+             <button class="flashButton">flash 🔈</button>
+             <audio id="flashAudio" src="{{ url_for('static', filename='audio/flash.wav') }}"></audio>
+ 
+          {% elif 'alarm' in section %}
+             <button class="alarmButton">alarm 🔈</button>
+             <audio id="alarmAudio" src="{{ url_for('static', filename='audio/alarm.wav') }}"></audio>
+
+          {% elif 'suit' in section %}
+             <button class="suitButton">suit 🔈</button>
+             <audio id="suitAudio" src="{{ url_for('static', filename='audio/suit.wav') }}"></audio>
+
+          {% elif 'trapped' in section %}
+             <button class="trappedButton">trapped 🔈</button>
+             <audio id="trappedAudio" src="{{ url_for('static', filename='audio/trapped.wav') }}"></audio>
+
+          {% elif 'rubbing' in section %}
+             <button class="rubbingButton">rubbing 🔈</button>
+             <audio id="rubbingAudio" src="{{ url_for('static', filename='audio/rubbing.wav') }}"></audio>
+
+          {% elif 'ate ' in section %}
+             <button class="ateButton">ate 🔈</button>
+             <audio id="ateAudio" src="{{ url_for('static', filename='audio/ate.wav') }}"></audio>
+
+          {% elif 'warbling' in section %}
+             <button class="warblingButton">warbling 🔈</button>
+             <audio id="warblingAudio" src="{{ url_for('static', filename='audio/warbling.wav') }}"></audio>
+
+          {% elif 'chime-like' in section %}
+             <button class="chime-likeButton">chime-like 🔈</button>
+             <audio id="chime-likeAudio" src="{{ url_for('static', filename='audio/chime-like.wav') }}"></audio>
+
+          {% elif 'bubbling' in section %}
+             <button class="bubblingButton">bubbling 🔈</button>
+             <audio id="bubblingAudio" src="{{ url_for('static', filename='audio/bubbling.wav') }}"></audio>
+
+          {% elif 'whistle' in section %}
+             <button class="whistleButton">whistle 🔈</button>
+             <audio id="whistleAudio" src="{{ url_for('static', filename='audio/whistle.wav') }}"></audio>
+
+          {% elif 'vibration' in section %}
+             <button class="vibrationButton">vibration 🔈</button>
+             <audio id="vibrationAudio" src="{{ url_for('static', filename='audio/vibration.wav') }}"></audio>
+
+          {% elif 'ran' in section %}
+             <button class="ranButton">ran 🔈</button>
+             <audio id="ranAudio" src="{{ url_for('static', filename='audio/ran.wav') }}"></audio>
+
+          {% elif 'growl' in section %}
+             <button class="growlButton">growl 🔈</button>
+             <audio id="growlAudio" src="{{ url_for('static', filename='audio/growl.wav') }}"></audio>
+
+          {% elif 'battle' in section %}
+             <button class="battleButton">battle 🔈</button>
+             <audio id="battleAudio" src="{{ url_for('static', filename='audio/battle.wav') }}"></audio>
+
+          {% elif 'missed' in section %}
+             <button class="missedButton">missed 🔈</button>
+             <audio id="missedAudio" src="{{ url_for('static', filename='audio/missed.wav') }}"></audio>
+          {% else %}
+          {{ section }}
+          {% endif %}
+          {% endfor %}
+          </div>
+          
+          <!--  Checking for the keyword pokemon in text to add music soundtrack -->
+           {% if 'Pokémon' in story %}
+            <button class="MusicButton">Music On 🔈</button>
+            <audio id="PokémonAudio" src="{{ url_for('static', filename='Audio/Pokémon.mp3') }}"></audio>
+
+           {% endif %}
+
       {% else %}
         <p>Story not found</p>
       {% endif %}
+
+    
+<script>
+        // Javascript
+        
+        // Audio file variables
+            let audio1 = document.getElementById("roarAudio");
+            let audio2 = document.getElementById("explosionAudio");
+            let audio3 = document.getElementById("portalAudio");
+            let audio4 = document.getElementById("grabbedAudio");
+            let audio5 = document.getElementById("rainyAudio");
+            let audio6 = document.getElementById("windyAudio");
+            let audio7 = document.getElementById("stormyAudio");
+            let audio8 = document.getElementById("jungleAudio");
+            let audio9 = document.getElementById("roaringAudio");
+            let audio10 = document.getElementById("roaredAudio");
+            let audio11 = document.getElementById("beachAudio");
+            let audio12 = document.getElementById("cryingAudio");
+            let audio13 = document.getElementById("breakAudio");
+            let audio14 = document.getElementById("tinyAudio");
+            let audio15 = document.getElementById("flashAudio");
+            let audio16 = document.getElementById("alarmAudio");
+            let audio17 = document.getElementById("suitAudio");
+            let audio18 = document.getElementById("trappedAudio");
+            let audio19 = document.getElementById("rubbingAudio");
+            let audio20 = document.getElementById("ateAudio");
+            let audio21 = document.getElementById("warblingAudio");
+            let audio22 = document.getElementById("chime-likeAudio");
+            let audio23 = document.getElementById("bubblingAudio");
+            let audio24 = document.getElementById("whistleAudio");
+            let audio25 = document.getElementById("vibrationAudio");
+            let audio26 = document.getElementById("ranAudio");
+            let audio27 = document.getElementById("growlAudio");
+            let audio28 = document.getElementById("battleAudio");
+            let audio29 = document.getElementById("missedAudio");
+            let audio30 = document.getElementById("PokémonAudio");
+        
+        
+        // Button and audio event triggers
+        
+            let buttons1 = document.querySelectorAll('.roarButton');
+            buttons1.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio1.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+            let buttons2 = document.querySelectorAll('.explosionButton');
+            buttons2.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio2.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+               let buttons3 = document.querySelectorAll('.portalButton');
+            buttons3.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio3.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+             let buttons4 = document.querySelectorAll('.grabbedButton');
+            buttons4.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio4.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+        
+                let buttons5 = document.querySelectorAll('.rainyButton');
+            buttons5.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio5.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                let buttons6 = document.querySelectorAll('.windyButton');
+            buttons6.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio6.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                let buttons7 = document.querySelectorAll('.stormyButton');
+            buttons7.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio7.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                let buttons8 = document.querySelectorAll('.jungleButton');
+            buttons8.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio8.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                let buttons9 = document.querySelectorAll('.roaringButton');
+            buttons9.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio9.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                 let buttons10 = document.querySelectorAll('.roaredButton');
+            buttons10.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio10.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                 let buttons11 = document.querySelectorAll('.beachButton');
+            buttons11.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio11.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                 let buttons12 = document.querySelectorAll('.cryingButton');
+            buttons12.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio12.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                 let buttons13 = document.querySelectorAll('.breakButton');
+            buttons13.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio13.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                 let buttons14 = document.querySelectorAll('.tinyButton');
+            buttons14.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio14.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                 let buttons15 = document.querySelectorAll('.flashButton');
+            buttons15.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio15.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                     let buttons16 = document.querySelectorAll('.alarmButton');
+            buttons16.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio16.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                     let buttons17 = document.querySelectorAll('.suitButton');
+            buttons17.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio17.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                     let buttons18 = document.querySelectorAll('.trappedButton');
+            buttons18.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio18.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                     let buttons19 = document.querySelectorAll('.rubbingButton');
+            buttons19.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio19.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                     let buttons20 = document.querySelectorAll('.ateButton');
+            buttons20.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio20.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                     let buttons21 = document.querySelectorAll('.warblingButton');
+            buttons21.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio21.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                     let buttons22 = document.querySelectorAll('.chime-likeButton');
+            buttons22.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio22.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                     let buttons23 = document.querySelectorAll('.bubblingButton');
+            buttons23.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio23.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                     let buttons24 = document.querySelectorAll('.whistleButton');
+            buttons24.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio24.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+                      let buttons25 = document.querySelectorAll('.vibrationButton');
+            buttons25.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio25.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                      let buttons26 = document.querySelectorAll('.ranButton');
+            buttons26.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio26.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                         let buttons27 = document.querySelectorAll('.growlButton');
+            buttons27.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio27.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+        
+                         let buttons28 = document.querySelectorAll('.battleButton');
+            buttons28.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio28.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                         let buttons29 = document.querySelectorAll('.missedButton');
+            buttons29.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio29.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+                         let buttons30 = document.querySelectorAll('.MusicButton');
+                buttons30.forEach(button => {
+                button.addEventListener('click', function() {
+                    audio30.play().then(() => {
+                    }).catch(error => {
+                        console.error('Error:', error);
+                    });
+                });
+            });
+        
+        
+    </script>
+
       <img src="/static/images/book.png" alt="book" id="book">
     <div class="buttons-container">
     
@@ -28,6 +504,6 @@
 
      <button class="nav-button" onclick="window.location.href='/theme'">Choose a new theme</button>
     </div>
-    </div>
+    
 </body>
 </html>
