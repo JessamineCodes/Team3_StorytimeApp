@@ -168,6 +168,7 @@ class StoryManager(DatabaseHandler):
 
 
 if __name__ == '__main__':
+    story_manager = None
     try:
         db_handler = DatabaseHandler()
         story_manager = StoryManager()
@@ -178,7 +179,7 @@ if __name__ == '__main__':
             story_manager.insert_user(td.list_user_dicts[x]['username'], td.list_user_dicts[x]['email'], td.list_user_dicts[x]['password'])
             x += 1
 
-        for x in range (td.total_stories):
+        for x in range (td.story_count):
             db_handler.execute_query(sql_queries.insert_story, (td.list_story_dicts[x]['title'], td.list_story_dicts[x]['content'], td.list_story_dicts[x]['child_name'], td.list_story_dicts[x]['userID']))
             x += 1
 
