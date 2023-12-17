@@ -2,9 +2,7 @@ import unittest
 #import 'patch' to mock the 'find_story_by_id' method of the Story class.
 from unittest.mock import patch
 #import classes with methods to be tested
-from StoryClasses import SpaceStory, DinosaurStory, PokemonStory
-from StoryClasses import Story
-
+from story_classes import Story, SpaceStory, DinosaurStory, PokemonStory
 
 class TestStory(unittest.TestCase):
     #test the initialization of the Story class
@@ -15,7 +13,7 @@ class TestStory(unittest.TestCase):
         self.assertEqual(story.child_age, 8)
 #use the patch decorater from the unitest module to mock the 'find_story_by_id' method and verify that
     #the method is behaving as expected, irrespecitve of external dependencies.
-    @patch('StoryClasses.Story.find_story_by_id')
+    @patch('story_classes.Story.find_story_by_id')
     # Test the 'find_story_by_id' method
     def test_find_story_by_id(self, mock_get_story_by_id):
         #configure the mock to return a list as it would in real usage
