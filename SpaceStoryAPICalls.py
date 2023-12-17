@@ -10,7 +10,7 @@ open_notify_url = "http://api.open-notify.org/astros.json"
 def get_response():
     try:
         response = requests.get(open_notify_url)
-        response.raise_for_status() # If the HTTP request returns unsucessful status code this will raise a HTTPError
+        response.raise_for_status() # If the HTTP request returns unsuccessful status code this will raise a HTTPError
         return response.json()
     
     except requests.exceptions.RequestException as e:
