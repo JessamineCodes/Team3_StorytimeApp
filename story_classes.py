@@ -1,5 +1,5 @@
-# Import method for creating space story text from SpaceStoryComponents.py
-from SpaceStoryComponents import space_story_text
+# Import method for creating space story text from space_story_components.py
+from space_story_components import space_story_text
 # Import method for creating dinosaur story text from DinosaurStoryComponents.py
 from DinosaurStoryComponents import dinosaur_story_text
 # Import method for creating pokemon story text from PokemonStoryComponents.py
