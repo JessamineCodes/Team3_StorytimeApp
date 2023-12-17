@@ -1,4 +1,5 @@
 from faker import Faker
+
 import random
 f = Faker()
 
@@ -51,7 +52,14 @@ for child in range(children):
         theme = random.choice(["Dinosaurs", "Space", "Pokemon"])
         title = f"{child_name}'s {theme} Story"
         test_story_dict['title'] = title
-        test_story_dict['content'] = "Placeholder Story"
+        if theme == "Dinosaurs":
+            test_story_dict['content'] = DinosaurStory(child_name, pronouns, child_age).generate_story()
+        elif theme == "Space":
+            test_story_dict['content'] = SpaceStory(child_name, pronouns, child_age).generate_story()
+        elif theme == "Pokemon":
+            test_story_dict['content'] = PokemonStory(child_name, pronouns, child_age).generate_story()
+        else:
+            print("Error: theme not found")
         test_story_dict['userID'] = parentID
         test_story_dict['child_name'] = child_name
         list_story_dicts.append(test_story_dict)

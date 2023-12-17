@@ -34,7 +34,7 @@ def add_mock_data(users, stories):
         story_manager.insert_user(mock.list_user_dicts[x]['username'], mock.list_user_dicts[x]['email'], mock.list_user_dicts[x]['password'])
         x += 1
     for y in range(stories):
-        story_manager.insert_mock_story(mock.list_story_dicts[y]['title'], mock.list_story_dicts[y]['content'], mock.list_story_dicts[y]['child_name'], mock.list_story_dicts[y]['userID'])
+        story_manager.insert_story(mock.list_story_dicts[y]['title'], mock.list_story_dicts[y]['content'], mock.list_story_dicts[y]['child_name'], mock.list_story_dicts[y]['userID'])
         x += 1
 
 
