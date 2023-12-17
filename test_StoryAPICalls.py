@@ -3,14 +3,14 @@ from unittest.mock import patch, MagicMock
 # import the functions to be tested
 from DinosaurStoryAPICalls import get_random_dino_info
 from PokemonStoryApiCalls import get_pokemon_info
-from SpaceStoryAPICalls import get_astronaut_name, get_no_iss_residents
+from space_story_api_calls import get_astronaut_name, get_no_iss_residents
 
 
 # test class for space story API calls
 class TestSpaceStoryAPICalls(unittest.TestCase):
     # test case for function to retrieve astronaut names
     # patch decorator from unittest module used to mock the 'requests.get' function during test execution
-    @patch('SpaceStoryAPICalls.requests.get')
+    @patch('space_story_api_calls.requests.get')
     def test_get_astronaut_name(self, mock_requests_get):
         # mock response object created with sample astronaut names
         mock_response = MagicMock()
@@ -26,7 +26,7 @@ class TestSpaceStoryAPICalls(unittest.TestCase):
 
     # test case for function to retrieve the number of iss residents
     # patch decorator from unittest module used to mock the 'get_response' function during test execution
-    @patch('SpaceStoryAPICalls.get_response')
+    @patch('space_story_api_calls.get_response')
     def test_get_no_iss_residents(self, mock_get_response):
         # mock response object created with sample iss resident data
         mock_response = {'people': [{'name': 'Astronaut 1'}, {'name': 'Astronaut 2'}], 'number': 2}
