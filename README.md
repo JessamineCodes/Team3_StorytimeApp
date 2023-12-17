@@ -28,9 +28,10 @@ _All team members played a crucial role in developing Once Upon AI Time, contrib
 
 ## Usage
 
-1. Run the database: `db_management.py`
+1. Run the file: `RUN_THIS_demo.py` and follow the prompts.
 2. Run the Flask application: `python app.py`
-2. Access the application in your browser at `http://localhost:8080/`
+3. Access the application in your browser at `http://localhost:8080/`
+  *PLEASE NOTE: this should be run in a chrome browser for full functionality*
 
 ## Technologies
 
@@ -40,6 +41,7 @@ _All team members played a crucial role in developing Once Upon AI Time, contrib
 - **dotenv:** Secure management of environment variables.
 - **Requests:** Used for making API calls.
 - **Random:** Employed for randomizing story templates.
+- **Faker:** For generating fake data to populate database.
 
 ## File tree
 
