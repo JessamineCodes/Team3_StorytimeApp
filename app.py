@@ -58,16 +58,15 @@ def create(theme):
 
 
 @app.route('/story/<int:story_id>')
-def show_story(story_id, db_handler=db_manager):
-    # Use story_id to fetch story details from your database
-    story = Story.find_story_by_id(story_id, db_handler)  # Fetch story using the get_story_by_id method
+def show_story(story_id):
+    db_handler = db_manager  # Ensure this is properly initialized
+    story = Story.find_story_by_id(story_id, db_handler)
 
-    # if return a result
     if story:
-        # Pass the 'story' object to the template
         return render_template('story.html', story=story)
     else:
         return "Story not found"
+
 
 
 @app.route('/saved/<int:user_id>')

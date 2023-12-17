@@ -12,6 +12,7 @@ fetch_user = "SELECT max(UserID) FROM Users"
 fetch_all_child_stories = "SELECT Title FROM stories WHERE ChildName = %s"
 
 # Fetch all stories by user ID
-fetch_all_user_stories = "SELECT Title FROM stories WHERE UserID = %s"
+fetch_all_user_stories = "SELECT StoryID, Title, Content, ChildName FROM stories WHERE UserId = %s"
 
-
+# Fetch story by story ID
+fetch_story_by_id = "SELECT Title, Content FROM stories WHERE StoryID = %s"
