@@ -9,7 +9,7 @@ from PokemonStoryComponents import pokemon_story_text
 import abc
 
 # Import method for getting a specific story from utils
-from utils import get_story_by_id, find_stories_by_user_id
+from SQL_queries import fetch_all_user_stories, fetch_story_by_id
 
 
 # Class for creating a story object - initialised with 3 inputs about the child and chosen theme
@@ -26,18 +26,18 @@ class Story:
     def generate_story(self):
         pass
 
-     # Class level method for getting a specific story from the database
+     
     @staticmethod
-    def find_story_by_id(story_id, db_handler):
-        # use method from db utils to get story by id from DB
-        return get_story_by_id(story_id, db_handler)
-    
+    # Class level method for getting all stories by user id from the database
     def show_stories_by_user_id(user_id, db_handler):
-        return find_stories_by_user_id(user_id, db_handler)
-        
-
-
-
+        return db_handler.fetch_query(fetch_all_user_stories, (user_id,))   
+    
+    # Class level method for getting a specific story from the database
+    def find_story_by_id(story_id, db_handler):
+        result = db_handler.fetch_query(fetch_story_by_id, (story_id,))
+        if result and len(result[0]) >= 2:  # Check if the result exists and has at least two elements
+            return result[0]
+        return None
 
 
 class SpaceStory(Story):
