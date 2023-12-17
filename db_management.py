@@ -6,8 +6,6 @@ from config import DB_HOST, DB_NAME
 from dotenv import load_dotenv
 # operating system dependent functionality
 import os
-
-import test_data_generation as td
 import sql_queries
 
 load_dotenv()
@@ -167,25 +165,4 @@ class StoryManager(DatabaseHandler):
         return None
 
 
-if __name__ == '__main__':
-    story_manager = None
-    try:
-        db_handler = DatabaseHandler()
-        story_manager = StoryManager()
 
-        # Populating database with mock data via test_data_generation
-
-        for x in range (td.parents):
-            story_manager.insert_user(td.list_user_dicts[x]['username'], td.list_user_dicts[x]['email'], td.list_user_dicts[x]['password'])
-            x += 1
-
-        for x in range (td.story_count):
-            db_handler.execute_query(sql_queries.insert_story, (td.list_story_dicts[x]['title'], td.list_story_dicts[x]['content'], td.list_story_dicts[x]['child_name'], td.list_story_dicts[x]['userID']))
-            x += 1
-
-
-    finally:
-        # Close the MySQL connection
-        story_manager.close_connection()
-
-db_handler = None
