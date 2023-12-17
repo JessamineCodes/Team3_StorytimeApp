@@ -10,20 +10,17 @@ from dotenv import load_dotenv
 import os
 
 # import story class instance to retrieve child's name and story text
-from StoryClasses import dinosaur_story_instance, dinosaur_story, pokemon_story_instance, pokemon_story, space_story_instance, space_story
-
+# from StoryClasses import dinosaur_story_instance, dinosaur_story, pokemon_story_instance, pokemon_story, space_story_instance, space_story
 from pprint import pprint
 
 load_dotenv()
 
-
-db_config = {
+DB_CONFIG = {
     'user': os.getenv('DB_USER'),
     'password': os.getenv('DB_PASS'),
     'database': DB_NAME,
     'host': DB_HOST
 }
-
 
 # create error for DB connection exception handling
 class DbConnectionError(Exception):
@@ -35,11 +32,10 @@ class QueryExecutionError(Exception):
     pass
 
 
-
 # create class to create, connect to and populate stories database
 class DatabaseHandler:
 
-    def __init__(self):
+    def __init__(self, db_config):
         try:
             self.connection = mysql.connector.connect(
                 host=db_config['host'],
@@ -47,60 +43,11 @@ class DatabaseHandler:
                 password=db_config['password'],
             )
 
-            self.cursor = self.connection.cursor()
-
-            # Create the database if it doesn't exist
-            self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")
-            self.connection.commit()
-            print("storybook db created") # remove
-
-            # Switch to the specified database
-            self.cursor.execute(f"USE {DB_NAME}")
-            self.connection.commit()
-
         except Exception as e:
             print(f"Error establishing database connection: {e}")
             raise DbConnectionError("Failed to connect to the database")
 
-        try:
 
-            self.cursor.execute("""
-                CREATE TABLE IF NOT EXISTS users (
-                    UserID INT PRIMARY KEY AUTO_INCREMENT,
-                    Username VARCHAR(50) NOT NULL,
-                    Email VARCHAR(100) NOT NULL,
-                    PasswordHash VARCHAR(255) NOT NULL,
-                    DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP
-                    )
-                """) # UNIQUE constraint in Email
-
-            self.connection.commit()  # Commit the changes
-            print("Table users added to storybook DB")
-        except Exception as e:
-            print(f"Error creating 'users' table: {e}")
-            raise DbConnectionError("Failed to add 'users' table to storybook DB")
-
-        try:
-
-            # Create the 'stories' table if it doesn't exist
-            self.cursor.execute("""
-                    CREATE TABLE IF NOT EXISTS stories (
-                        StoryID INT PRIMARY KEY AUTO_INCREMENT,
-                        Title VARCHAR(100) NOT NULL,
-                        Content TEXT NOT NULL,
-                        DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                        UserID INT NOT NULL,
-                        ChildName VARCHAR(100) NOT NULL,
-                        FOREIGN KEY (UserID) REFERENCES users(UserID)
-                    )
-
-            """)
-
-            self.connection.commit()
-            print("Table stories added to storybook DB")
-        except Exception as e:
-            print(f"Error creating 'stories' table: {e}")
-            raise DbConnectionError("Failed to add 'stories' table to storybook DB")
 
     # query to write to the database
     def execute_query(self, query, data=None):
@@ -139,20 +86,93 @@ class DatabaseHandler:
             self.connection.close()
             print("MySQL connection closed")
 
+class SetUpAndTearDownHandler(DatabaseHandler):
+
+    def __init__(self, db_config=DB_CONFIG):
+        super().__init__(db_config)
+        self.db_config = db_config
+        self.cursor = self.connection.cursor()
+        self.db_handler = None
+
+    def setup(self):
+
+        # Create the database if it doesn't exist
+        self.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {self.db_config['database']}")
+        self.connection.commit()
+
+        # Switch to the specified database
+        self.cursor.execute(f"USE {self.db_config['database']}")
+        self.connection.commit()
+
+        try:
+
+            self.cursor.execute("""
+                                CREATE TABLE IF NOT EXISTS users (
+                                    UserID INT PRIMARY KEY AUTO_INCREMENT,
+                                    Username VARCHAR(50) NOT NULL,
+                                    Email VARCHAR(100) NOT NULL,
+                                    PasswordHash VARCHAR(255) NOT NULL,
+                                    DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP
+                                    )
+                                """)
+
+            self.connection.commit()  # Commit the changes
+        except Exception as e:
+            print(f"Error creating 'users' table: {e}")
+            raise DbConnectionError("Failed to add 'users' table to storybook DB")
+
+
+        try:
+
+            # Create the 'stories' table if it doesn't exist
+            self.cursor.execute("""
+                                    CREATE TABLE IF NOT EXISTS stories (
+                                        StoryID INT PRIMARY KEY AUTO_INCREMENT,
+                                        Title VARCHAR(100) NOT NULL,
+                                        Content TEXT NOT NULL,
+                                        DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                                        UserID INT NOT NULL,
+                                        ChildName VARCHAR(100) NOT NULL,
+                                        FOREIGN KEY (UserID) REFERENCES users(UserID)
+                                    )
+        
+                            """)
+
+            self.connection.commit()
+
+        except Exception as e:
+            print(f"Error creating 'stories' table: {e}")
+            raise DbConnectionError("Failed to add 'stories' table to storybook DB")
+
+        self.close_connection()
+
+    def teardown(self):
+
+        try:
+            self.cursor.execute(f"DROP DATABASE {self.db_config['database']}")
+            self.connection.commit()
+
+        except mysql.connector.Error as err:  # TEST THIS
+            print(f"Database {self.db_config['database']} does not exist. Dropping db failed")
+        self.close_connection()
 
 class StoryManager(DatabaseHandler):
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, db_config=DB_CONFIG):
+        super().__init__(db_config)
         self.db_handler = None
+        self.execute_query(f"USE {db_config['database']}")
+
 
     def insert_user(self, username, email, password):
         self.execute_query(SQL_queries.insert_user, (username, email, password))
 
     def insert_story(self, story_instance, content):
         title = story_instance.get_title()
-        self.execute_query(SQL_queries.insert_story,
-                           (title, content, story_instance.child_name, story_instance.user_id))
+        self.execute_query(SQL_queries.insert_story,(title, content, story_instance.child_name, story_instance.user_id))
+
+    def insert_mock_story(self, title, content, child_name, user_id):
+        self.execute_query(SQL_queries.insert_story,(title, content, child_name, user_id))
 
     def fetch_all_child_stories(self, child):
         result = self.fetch_query(SQL_queries.fetch_all_child_stories, child)
@@ -170,46 +190,13 @@ class StoryManager(DatabaseHandler):
         result = self.fetch_query(SQL_queries.fetch_user)
         if result:
             return result[0][0]
-        return None
+        else:
+            return None
 
-
-if __name__ == '__main__':
-    try:
-        # db_handler = DatabaseHandler()
-        story_manager = StoryManager()
-
-        # # Insert user into the MySQL database users table
-        # story_manager.insert_user("megan", "megan@megan.com", "1234")
-        # #
-        # # # # Retrieve the latest ID
-        # user_id = story_manager.fetch_user_id()
-        # print(f"userID = {user_id}")
-        # print(type(user_id))
-        # #
-        # # # # Retrieve specific user ID
-        # # # user_id = story_manager.fetch_user_id("pam@pam.com")
-        # #
-        # # # Insert the space story text into the MySQL database
-        # space_story_instance.user_id = user_id
-        # story_manager.insert_story(space_story_instance, space_story)
-        #
-        # # # Insert the dinosaur story text into the MySQL database
-        # dinosaur_story_instance.user_id = user_id
-        # story_manager.insert_story(dinosaur_story_instance, dinosaur_story)
-        # #
-        # # # Insert the pokemon story text into the MySQL database
-        # pokemon_story_instance.user_id = user_id
-        # story_manager.insert_story(pokemon_story_instance, pokemon_story)
-        # #
-        # # Fetch all stories for a specific child (pprint used: list of tuples)
-        # pprint(story_manager.fetch_all_child_stories(["Jo"]))
-        #
-        # # Fetch all stories for a specific user ID (pprint used: list of tuples)
-        # pprint(story_manager.fetch_all_user_stories(["1"]))
-
-    finally:
-        # Close the MySQL connection
-        story_manager.close_connection()
-
-db_handler = None
+    def fetch_story_by_id(self, storyid):
+        result = self.fetch_query(SQL_queries.fetch_story_by_id, storyid)
+        if result:
+            return result[0]
+        else:
+            return None
 

@@ -3,7 +3,7 @@ from db_management import DatabaseHandler
 from StoryClasses import Story
 
 def test_story_creation():
-    db_handler = DatabaseHandler()
+    db_handler = DatabaseHandler(db_config)
 
     try:
         # Insert user into the MySQL database

@@ -27,11 +27,10 @@ class Story:
         pass
 
      # Class level method for getting a specific story from the database
-    @staticmethod
-    def find_story_by_id(story_id, db_handler):
-        # use method from db utils to get story by id from DB
-        return get_story_by_id(story_id, db_handler)
-
+    # @staticmethod
+    # def find_story_by_id(story_id, db_handler):
+    #     # use method from db utils to get story by id from DB
+    #     return get_story_by_id(story_id, db_handler)
 
 
 class SpaceStory(Story):
@@ -65,30 +64,33 @@ class PokemonStory(Story):
         return f"{self.child_name}'s Pokemon Story"
 
 
-# Testing the class by creating a dino story object and printing the story text
-space_story_instance = SpaceStory("Jo", "he", "7")
-space_story = space_story_instance.generate_story()
-print(space_story)
+if __name__ == "__main__":
 
 
-print(f"Printing space story with pronouns {space_story_instance.child_pronouns}")
-print(space_story)
-print("------------------------------------------------------------------")
+    #Testing the class by creating a dino story object and printing the story text
+    space_story_instance = SpaceStory("Jo", "he", "7")
+    space_story = space_story_instance.generate_story()
+    print(space_story)
 
 
-# Testing the class by creating a dino story object and printing the story text
-dinosaur_story_instance = DinosaurStory("Rose", "she", "9")
-dinosaur_story = dinosaur_story_instance.generate_story()
-print(dinosaur_story)
+    print(f"Printing space story with pronouns {space_story_instance.child_pronouns}")
+    print(space_story)
+    print("------------------------------------------------------------------")
 
-print(f"Printing dinosaur story with pronouns {dinosaur_story_instance.child_pronouns}")
-print(dinosaur_story)
-print("------------------------------------------------------------------")
 
-# Testing the class by creating a pokemon story object and printing the story text
-pokemon_story_instance = PokemonStory("Max", "ze", "8")
-pokemon_story = pokemon_story_instance.generate_story()
+    # Testing the class by creating a dino story object and printing the story text
+    dinosaur_story_instance = DinosaurStory("Rose", "she", "9")
+    dinosaur_story = dinosaur_story_instance.generate_story()
+    print(dinosaur_story)
 
-print(f"Printing pokemon story with pronouns {pokemon_story_instance.child_pronouns}")
-print(pokemon_story)
-print("------------------------------------------------------------------")
+    print(f"Printing dinosaur story with pronouns {dinosaur_story_instance.child_pronouns}")
+    print(dinosaur_story)
+    print("------------------------------------------------------------------")
+
+    # Testing the class by creating a pokemon story object and printing the story text
+    pokemon_story_instance = PokemonStory("Max", "ze", "8")
+    pokemon_story = pokemon_story_instance.generate_story()
+
+    print(f"Printing pokemon story with pronouns {pokemon_story_instance.child_pronouns}")
+    print(pokemon_story)
+    print("------------------------------------------------------------------")

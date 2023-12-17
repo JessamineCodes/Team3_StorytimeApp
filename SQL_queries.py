@@ -14,6 +14,9 @@ fetch_all_child_stories = "SELECT Title FROM stories WHERE ChildName = %s"
 # Fetch all stories by user ID
 fetch_all_user_stories = "SELECT Title FROM stories WHERE UserID = %s"
 
+# Fetch story by story ID
+fetch_story_by_id = "SELECT Title, Content FROM stories WHERE StoryID = %s"
+
 
 
 
