@@ -6,21 +6,15 @@ from config import DB_HOST, DB_NAME
 from dotenv import load_dotenv
 # operating system dependent functionality
 import os
-
+# import exception classes from utils file
+from utils import DbConnectionError, QueryExecutionError
 import test_data_generation as td
 import SQL_queries
 
 load_dotenv()
 
 
-# create error for DB connection exception handling
-class DbConnectionError(Exception):
-    pass
 
-
-# create error for query execution exception handling
-class QueryExecutionError(Exception):
-    pass
 
 
 # create class to create, connect to and populate stories database

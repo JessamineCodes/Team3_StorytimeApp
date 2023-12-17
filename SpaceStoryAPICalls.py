@@ -10,7 +10,7 @@ open_notify_url = "http://api.open-notify.org/astros.json"
 def get_response():
     try:
         response = requests.get(open_notify_url)
-        response.raise_for_status() # If there the HTTP request returns unsecessful status code this will raise a HTTPError
+        response.raise_for_status() # If the HTTP request returns unsucessful status code this will raise a HTTPError
         return response.json()
     
     except requests.exceptions.RequestException as e:
@@ -19,7 +19,7 @@ def get_response():
         return None, None 
     
     except KeyError as e:
-        # This will handle erros if expected keys are not found in API response
+        # This will handle errors if expected keys are not found in API response
         print(f"Key Error: {e}")
         return None, None
     
