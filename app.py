@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from StoryClasses import Story, SpaceStory, DinosaurStory, PokemonStory
 from db_management import DatabaseHandler
+from SQL_queries import insert_story
 app = Flask(__name__)
 
 db_manager = DatabaseHandler()
@@ -48,9 +49,8 @@ def create(theme):
         story_text = story_instance.generate_story()
 
         # Insert the story into the database
-        insert_story_query = "INSERT INTO stories (Title, Content, ChildName, UserId) VALUES (%s, %s, %s, %s)"
         story_title = f"{child_name}'s {theme.title()} Story"
-        story_id = db_handler.execute_query(insert_story_query, (story_title, story_text, child_name, user_id))
+        story_id = db_handler.execute_query(insert_story, (story_title, story_text, child_name, user_id))
 
         return redirect(url_for('show_story', story_id=story_id))
 
