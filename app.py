@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
-from StoryClasses import Story, SpaceStory, DinosaurStory, PokemonStory
+from story_classes import Story, SpaceStory, DinosaurStory, PokemonStory
 from db_management import DatabaseHandler
-from SQL_queries import insert_story
+from sql_queries import insert_story
 app = Flask(__name__)
 
 db_manager = DatabaseHandler()

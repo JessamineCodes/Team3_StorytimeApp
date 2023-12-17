@@ -1,4 +1,4 @@
-from StoryClasses import *
+from story_classes import *
 from faker import Faker
 import random
 f = Faker()
