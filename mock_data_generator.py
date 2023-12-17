@@ -68,3 +68,36 @@ for child in range(children):
         test_story_dict['child_name'] = child_name
         list_story_dicts.append(test_story_dict)
 
+# secondary loop to guarantee some stories generated for user 1 for demo purposes
+for child in range(1):
+
+    gender = random.choice(["male", "female"])
+    if gender == "male":
+        child_name = f.first_name_male()
+        pronouns = "he"
+    else:
+        child_name = f.first_name_female()
+        pronouns = "she"
+    child_age = random.randint(1, max_age)
+    parentID = 1
+
+    for story in range(2):
+        test_story_dict = {key: [] for key in ['title', 'content', 'child_name', 'userID']}
+        story_count += 1
+        theme = random.choice(["Dinosaurs", "Space", "Pokemon"])
+        title = f"{child_name}'s {theme} Story"
+        test_story_dict['title'] = title
+        if theme == "Dinosaurs":
+            test_story_dict['story_instance'] = DinosaurStory(child_name, pronouns, child_age)
+            test_story_dict['content'] = test_story_dict['story_instance'].generate_story()
+        elif theme == "Space":
+            test_story_dict['story_instance'] = SpaceStory(child_name, pronouns, child_age)
+            test_story_dict['content'] = test_story_dict['story_instance'].generate_story()
+        elif theme == "Pokemon":
+            test_story_dict['story_instance'] = PokemonStory(child_name, pronouns, child_age)
+            test_story_dict['content'] = test_story_dict['story_instance'].generate_story()
+        else:
+            print("Error: theme not found")
+        test_story_dict['story_instance'].user_id = parentID
+        test_story_dict['child_name'] = child_name
+        list_story_dicts.append(test_story_dict)
