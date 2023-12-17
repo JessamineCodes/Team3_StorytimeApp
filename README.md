@@ -28,9 +28,10 @@ _All team members played a crucial role in developing Once Upon AI Time, contrib
 
 ## Usage
 
-1. Run the database: `db_management.py`
+1. Run the file: `RUN_THIS_demo.py` and follow the prompts.
 2. Run the Flask application: `python app.py`
-2. Access the application in your browser at `http://localhost:8080/`
+3. Access the application in your browser at `http://localhost:8080/`
+  *PLEASE NOTE: this should be run in a chrome browser for full functionality*
 
 ## Technologies
 
@@ -40,11 +41,43 @@ _All team members played a crucial role in developing Once Upon AI Time, contrib
 - **dotenv:** Secure management of environment variables.
 - **Requests:** Used for making API calls.
 - **Random:** Employed for randomizing story templates.
+- **Faker:** For generating fake data to populate database.
 
 ## File tree
 
 📦Team3_StorytimeApp
  ┣ 📂static
+ ┃ ┣ 📂Audio
+ ┃ ┃ ┣ 📜Pokémon.mp3
+ ┃ ┃ ┣ 📜alarm.wav
+ ┃ ┃ ┣ 📜ate.wav
+ ┃ ┃ ┣ 📜battle.wav
+ ┃ ┃ ┣ 📜beach.wav
+ ┃ ┃ ┣ 📜break.wav
+ ┃ ┃ ┣ 📜bubbling.wav
+ ┃ ┃ ┣ 📜chime-like.wav
+ ┃ ┃ ┣ 📜crying.wav
+ ┃ ┃ ┣ 📜explosion.wav
+ ┃ ┃ ┣ 📜flash.wav
+ ┃ ┃ ┣ 📜grabbed.wav
+ ┃ ┃ ┣ 📜growl.wav
+ ┃ ┃ ┣ 📜jungle.wav
+ ┃ ┃ ┣ 📜missed.wav
+ ┃ ┃ ┣ 📜portal.wav
+ ┃ ┃ ┣ 📜rainy.wav
+ ┃ ┃ ┣ 📜ran.wav
+ ┃ ┃ ┣ 📜roar.wav
+ ┃ ┃ ┣ 📜roared.wav
+ ┃ ┃ ┣ 📜roaring.wav
+ ┃ ┃ ┣ 📜rubbing.wav
+ ┃ ┃ ┣ 📜stormy.wav
+ ┃ ┃ ┣ 📜suit.wav
+ ┃ ┃ ┣ 📜tiny.wav
+ ┃ ┃ ┣ 📜trapped.wav
+ ┃ ┃ ┣ 📜vibration.wav
+ ┃ ┃ ┣ 📜warbling.wav
+ ┃ ┃ ┣ 📜whistle.wav
+ ┃ ┃ ┗ 📜windy.wav
  ┃ ┣ 📂images
  ┃ ┃ ┣ 📂dinosaur
  ┃ ┃ ┃ ┗ 📜dinosaur.png
@@ -53,8 +86,11 @@ _All team members played a crucial role in developing Once Upon AI Time, contrib
  ┃ ┃ ┣ 📂pokemon
  ┃ ┃ ┃ ┗ 📜pokemon.png
  ┃ ┃ ┣ 📂space
+ ┃ ┃ ┃ ┣ 📜.DS_Store
  ┃ ┃ ┃ ┗ 📜space.png
+ ┃ ┃ ┣ 📜.DS_Store
  ┃ ┃ ┗ 📜book.png
+ ┃ ┣ 📜.DS_Store
  ┃ ┣ 📜dinosaur.css
  ┃ ┣ 📜home.css
  ┃ ┣ 📜login.css
@@ -71,22 +107,30 @@ _All team members played a crucial role in developing Once Upon AI Time, contrib
  ┃ ┣ 📜saved.html
  ┃ ┣ 📜story.html
  ┃ ┗ 📜theme.html
+ ┣ 📜.DS_Store
  ┣ 📜.env
  ┣ 📜.gitignore
- ┣ 📜DinosaurStoryAPICalls.py
- ┣ 📜DinosaurStoryComponents.py
- ┣ 📜PokemonStoryApiCalls.py
- ┣ 📜PokemonStoryComponents.py
  ┣ 📜README.md
- ┣ 📜SQL_queries.py
- ┣ 📜SpaceStoryAPICalls.py
- ┣ 📜SpaceStoryComponents.py
- ┣ 📜StoryClasses.py
+ ┣ 📜RUN_THIS_demo.py
  ┣ 📜app.py
  ┣ 📜config.py
  ┣ 📜db_management.py
+ ┣ 📜dinosaur_story_api_calls.py
+ ┣ 📜dinosaur_story_components.py
+ ┣ 📜mock_data_generator.py
+ ┣ 📜pokemon_story_api_calls.py
+ ┣ 📜pokemon_story_components.py
  ┣ 📜pronouns.py
  ┣ 📜requirements.txt
- ┣ 📜test_script.py
+ ┣ 📜space_story_api_calls.py
+ ┣ 📜space_story_components.py
+ ┣ 📜sql_queries.py
+ ┣ 📜story_classes.py
+ ┣ 📜test_data_generation.py
+ ┣ 📜test_dinosaur_story_components.py
+ ┣ 📜test_pokemon_story_components.py
+ ┣ 📜test_space_story_components.py
+ ┣ 📜test_story_api_calls.py
+ ┣ 📜test_story_classes.py
  ┗ 📜utils.py
 
