@@ -47,6 +47,37 @@ _All team members played a crucial role in developing Once Upon AI Time, contrib
 
 📦Team3_StorytimeApp
  ┣ 📂static
+ ┃ ┣ 📂Audio
+ ┃ ┃ ┣ 📜Pokémon.mp3
+ ┃ ┃ ┣ 📜alarm.wav
+ ┃ ┃ ┣ 📜ate.wav
+ ┃ ┃ ┣ 📜battle.wav
+ ┃ ┃ ┣ 📜beach.wav
+ ┃ ┃ ┣ 📜break.wav
+ ┃ ┃ ┣ 📜bubbling.wav
+ ┃ ┃ ┣ 📜chime-like.wav
+ ┃ ┃ ┣ 📜crying.wav
+ ┃ ┃ ┣ 📜explosion.wav
+ ┃ ┃ ┣ 📜flash.wav
+ ┃ ┃ ┣ 📜grabbed.wav
+ ┃ ┃ ┣ 📜growl.wav
+ ┃ ┃ ┣ 📜jungle.wav
+ ┃ ┃ ┣ 📜missed.wav
+ ┃ ┃ ┣ 📜portal.wav
+ ┃ ┃ ┣ 📜rainy.wav
+ ┃ ┃ ┣ 📜ran.wav
+ ┃ ┃ ┣ 📜roar.wav
+ ┃ ┃ ┣ 📜roared.wav
+ ┃ ┃ ┣ 📜roaring.wav
+ ┃ ┃ ┣ 📜rubbing.wav
+ ┃ ┃ ┣ 📜stormy.wav
+ ┃ ┃ ┣ 📜suit.wav
+ ┃ ┃ ┣ 📜tiny.wav
+ ┃ ┃ ┣ 📜trapped.wav
+ ┃ ┃ ┣ 📜vibration.wav
+ ┃ ┃ ┣ 📜warbling.wav
+ ┃ ┃ ┣ 📜whistle.wav
+ ┃ ┃ ┗ 📜windy.wav
  ┃ ┣ 📂images
  ┃ ┃ ┣ 📂dinosaur
  ┃ ┃ ┃ ┗ 📜dinosaur.png
@@ -55,8 +86,11 @@ _All team members played a crucial role in developing Once Upon AI Time, contrib
  ┃ ┃ ┣ 📂pokemon
  ┃ ┃ ┃ ┗ 📜pokemon.png
  ┃ ┃ ┣ 📂space
+ ┃ ┃ ┃ ┣ 📜.DS_Store
  ┃ ┃ ┃ ┗ 📜space.png
+ ┃ ┃ ┣ 📜.DS_Store
  ┃ ┃ ┗ 📜book.png
+ ┃ ┣ 📜.DS_Store
  ┃ ┣ 📜dinosaur.css
  ┃ ┣ 📜home.css
  ┃ ┣ 📜login.css
@@ -73,6 +107,7 @@ _All team members played a crucial role in developing Once Upon AI Time, contrib
  ┃ ┣ 📜saved.html
  ┃ ┣ 📜story.html
  ┃ ┗ 📜theme.html
+ ┣ 📜.DS_Store
  ┣ 📜.env
  ┣ 📜.gitignore
  ┣ 📜DinosaurStoryAPICalls.py
@@ -89,6 +124,12 @@ _All team members played a crucial role in developing Once Upon AI Time, contrib
  ┣ 📜db_management.py
  ┣ 📜pronouns.py
  ┣ 📜requirements.txt
+ ┣ 📜test_DinosaurStoryComponents.py
+ ┣ 📜test_PokemonStoryComponents.py
+ ┣ 📜test_SpaceStoryComponents.py
+ ┣ 📜test_StoryAPICalls.py
+ ┣ 📜test_Story_Classes.py
+ ┣ 📜test_data_generation.py
  ┣ 📜test_script.py
  ┗ 📜utils.py
 
