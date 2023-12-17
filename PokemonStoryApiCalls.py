@@ -16,7 +16,7 @@ def get_pokemon_info():
 
 
         response = requests.get(url)
-        response.raise_for_status() # If the HTTP request returns unsucessful status code this will raise a HTTPError
+        response.raise_for_status() # If the HTTP request returns unsuccessful status code this will raise a HTTPError
 
 
         data = response.json()
