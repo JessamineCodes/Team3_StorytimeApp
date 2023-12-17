@@ -43,6 +43,9 @@ _All team members played a crucial role in developing Once Upon AI Time, contrib
 - **Random:** Employed for randomizing story templates.
 - **Faker:** For generating fake data to populate database.
 
+## Drive containing project documentation and log
+[Link to folder](https://drive.google.com/drive/folders/1XGZ6XqsL-OPYqUY6oEpqjoY39EsXf3Ge?usp=sharing) containing Project Report and Activity Log.
+
 ## File tree
 
 📦Team3_StorytimeApp
