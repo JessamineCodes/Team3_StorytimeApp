@@ -63,7 +63,3 @@ for child in range(children):
         test_story_dict['userID'] = parentID
         test_story_dict['child_name'] = child_name
         list_story_dicts.append(test_story_dict)
-
-
-print(list_story_dicts)
-print(list_user_dicts)
