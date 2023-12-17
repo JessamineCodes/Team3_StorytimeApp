@@ -8,9 +8,10 @@ from dotenv import load_dotenv
 import os
 # import exception classes from utils file
 from utils import DbConnectionError, QueryExecutionError
-import test_data_generation as td
-import SQL_queries
+# import sql queries from sql_queries file
+import sql_queries
 
+# Function to read a file that contains environment variables
 load_dotenv()
 
 
@@ -135,50 +136,27 @@ class StoryManager(DatabaseHandler):
         self.db_handler = None
 
     def insert_user(self, username, email, password):
-        self.execute_query(SQL_queries.insert_user, (username, email, password))
+        self.execute_query(sql_queries.insert_user, (username, email, password))
 
     def insert_story(self, story_instance, content):
         title = story_instance.get_title()
-        self.execute_query(SQL_queries.insert_story,
+        self.execute_query(sql_queries.insert_story,
                            (title, content, story_instance.child_name, story_instance.user_id))
 
     def fetch_all_child_stories(self, child):
-        result = self.fetch_query(SQL_queries.fetch_all_child_stories, child)
+        result = self.fetch_query(sql_queries.fetch_all_child_stories, child)
         if result:
             return [i[0] for i in result]
         return None
 
     def fetch_all_user_stories(self, userid):
-        result = self.fetch_query(SQL_queries.fetch_all_user_stories, userid)
+        result = self.fetch_query(sql_queries.fetch_all_user_stories, userid)
         if result:
             return [i[0] for i in result]
         return None
 
     def fetch_user_id(self):
-        result = self.fetch_query(SQL_queries.fetch_user)
+        result = self.fetch_query(sql_queries.fetch_user)
         if result:
             return result[0][0]
         return None
-
-
-if __name__ == '__main__':
-    try:
-        db_handler = DatabaseHandler()
-        story_manager = StoryManager()
-
-        # Populating database with mock data via test_data_generation
-
-        for x in range (td.parents):
-            story_manager.insert_user(td.list_user_dicts[x]['username'], td.list_user_dicts[x]['email'], td.list_user_dicts[x]['password'])
-            x += 1
-
-        for x in range (td.total_stories):
-            db_handler.execute_query(SQL_queries.insert_story, (td.list_story_dicts[x]['title'], td.list_story_dicts[x]['content'], td.list_story_dicts[x]['child_name'], td.list_story_dicts[x]['userID']))
-            x += 1
-
-
-    finally:
-        # Close the MySQL connection
-        story_manager.close_connection()
-
-db_handler = None
