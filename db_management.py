@@ -170,15 +170,6 @@ class StoryManager(DatabaseHandler):
         self.execute_query(SQL_queries.insert_story,
                            (title, content, story_instance.child_name, story_instance.user_id))
 
-    def insert_mock_story(self, title, content, child_name, user_id):
-        self.execute_query(SQL_queries.insert_story, (title, content, child_name, user_id))
-
-    def fetch_all_child_stories(self, child):
-        result = self.fetch_query(SQL_queries.fetch_all_child_stories, child)
-        if result:
-            return [i[0] for i in result]
-        return None
-
     def fetch_all_user_stories(self, userid):
         result = self.fetch_query(SQL_queries.fetch_all_user_stories, userid)
         if result:
