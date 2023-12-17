@@ -1,6 +1,6 @@
 import unittest
 # import functions to be tested
-from PokemonStoryComponents import (
+from pokemon_story_components import (
     paragraph_one,
     paragraph_two,
     paragraph_three,

@@ -4,11 +4,11 @@ import random
 # import pronouns dictionary
 from pronouns import pronouns
 
-# import API call functions from SpaceStoryAPICalls.py
-from SpaceStoryAPICalls import get_astronaut_name, get_no_iss_residents
+# import API call functions from space_story_api_calls.py
+from space_story_api_calls import get_astronaut_name, get_no_iss_residents
 
 # Method for creating paragraph one, takes child name and age as inputs
-# Uses the get_astronaut_name function from SpaceStoryAPICalls.py to get a random astronaut name
+# Uses the get_astronaut_name function from space_story_api_calls.py to get a random astronaut name
 # Returns a string containing paragraph one of the story from two possible options
 def paragraph_one(child_name, child_age):
     astronaut_name = get_astronaut_name()
@@ -33,7 +33,7 @@ def paragraph_two(child_name, child_pronouns):
     return random.choice([option_one, option_two])
 
 # Method for creating paragraph three, takes child name as input
-# Uses the get_no_iss_residents function from SpaceStoryAPICalls.py to get the number of ISS residents
+# Uses the get_no_iss_residents function from space_story_api_calls.py to get the number of ISS residents
 # Uses the random module to randomly select alien name from a list of options for the story
 # Returns a string containing paragraph three of the story
 def paragraph_three(child_name):
