@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch, MagicMock
 # import the functions to be tested
-from DinosaurStoryAPICalls import get_random_dino_info
+from dinosaur_story_api_calls import get_random_dino_info
 from pokemon_story_api_calls import get_pokemon_info
 from space_story_api_calls import get_astronaut_name, get_no_iss_residents
 
@@ -78,7 +78,7 @@ class TestGetRandomDinoInfo(unittest.TestCase):
 
     # test case for the function to retrieve random dinosaur information
     # patch decorator from unittest module used to mock the 'requests.get' function during test execution
-    @patch('DinosaurStoryAPICalls.requests.get')
+    @patch('dinosaur_story_api_calls.requests.get')
     def test_get_random_dino_info(self, mock_requests_get):
         # mock the response.json() method to return sample data
         sample_data = {
