@@ -11,7 +11,7 @@ get_dino_url = "https://dinosaur-facts-api.shultzlab.com/dinosaurs/random"
 def get_random_dino_info():
     try:
         response = requests.get(get_dino_url)
-        response.raise_for_status() # If the HTTP request returns unsucessful status code this will raise a HTTPError
+        response.raise_for_status() # If the HTTP request returns unsuccessful status code this will raise a HTTPError
         
         dinosaur_dictionary = response.json()
         dino_species = dinosaur_dictionary['Name']
