@@ -6,19 +6,16 @@ from config import DB_HOST, DB_NAME
 from dotenv import load_dotenv
 # operating system dependent functionality
 import os
+# import exception classes from utils file
+from utils import DbConnectionError, QueryExecutionError
+# import sql queries from sql_queries file
 import sql_queries
 
+# Function to read a file that contains environment variables
 load_dotenv()
 
 
-# create error for DB connection exception handling
-class DbConnectionError(Exception):
-    pass
 
-
-# create error for query execution exception handling
-class QueryExecutionError(Exception):
-    pass
 
 
 # create class to create, connect to and populate stories database
@@ -163,6 +160,3 @@ class StoryManager(DatabaseHandler):
         if result:
             return result[0][0]
         return None
-
-
-

@@ -8,7 +8,7 @@ def are_you_ready():
         if ready == "yes":
             print("\nExcellent! Lets get started.\n")
         elif ready == "no":
-            print("It is advised that you set up the database before visiting out story generator app.")
+            print("It is advised that you set up the database before visiting our story generator app.")
             are_you_ready()
         else:
             print("\nTry again - yes or no, please! \n")
